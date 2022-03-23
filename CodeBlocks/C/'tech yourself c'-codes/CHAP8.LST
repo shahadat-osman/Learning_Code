@@ -1,0 +1,407 @@
+listing 1
+void func(int a, char ch, double d)
+{
+.
+.
+.
+
+listing 2
+#include <stdio.h>
+
+#define MAX 100
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<MAX; i++) printf("%d ", i);
+
+  return 0;
+}
+
+listing 3
+for(i=0; i<100; i++) printf("%d ", i);
+
+listing 4
+#include <stdio.h>
+
+void f(void);
+
+int main(void)
+{
+  #define LIGHTSPEED 186000
+
+  f();
+
+  return 0;
+}
+
+void f(void)
+{
+  printf("%ld", LIGHTSPEED);
+}
+
+listing 5
+#include <stdio.h>
+
+#define FUN "Macro Substitutions are Fun"
+
+int main(void)
+{
+  printf(FUN);
+
+  return 0;
+}
+
+listing 6
+printf("Macro Substitutions are Fun");
+
+listing 7
+#include <stdio.h>
+
+#define SMALL 1
+#define MEDIUM SMALL+1
+#define LARGE MEDIUM+1
+
+int main(void)
+{
+  printf("%d %d %d", SMALL, MEDIUM, LARGE);
+
+  return 0;
+}
+
+listing 8
+#define ERROR "catastrophic error occurred"
+
+listing 9
+printf("ERROR: Try again");
+
+listing 10
+#define MAX MIN+100
+#define MIN 10
+
+listing 11
+#define STR this is a test
+.
+.
+.
+printf(STR);
+
+listing 12
+#define STDIO <stdio.h>
+#include STDIO
+
+int main(void)
+{
+  printf("This is a test.");
+
+  return 0;
+}
+
+listing 13
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+  do {
+    ch = getchar();
+    putchar('.');
+  } while(ch != '\n');
+
+  return 0;
+}
+
+listing 14
+#include <stdio.h>
+
+int main(void)
+{
+  putchar('A');
+  putchar('\n');
+  putchar('B');
+
+  return 0;
+}
+
+listing 15
+char str[80] = "this is a test";
+.
+.
+.
+putchar(str);
+
+listing 16
+#include <stdio.h>
+#include <conio.h>
+#include <ctype.h>
+
+int main(void)
+{
+  char ch;
+
+  do {
+    ch = getch();
+    cprintf("%c", toupper(ch));
+  } while(ch != 'q');
+
+  return 0;
+}
+
+listing 17
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+  double amount;
+
+  amount = 0.20;
+
+  cprintf("Printing 5-percent tax table\n\r");
+  cprintf("Press a key to stop.\n\n\r");
+  do {
+    cprintf("amount: %f, tax: %f\n\r", amount, amount*0.05);
+    if(kbhit()) break;
+    amount = amount + 0.20;
+  } while(amount < 100.0);
+
+  return 0;
+}
+
+listing 18
+#include <stdio.h>
+
+int main(void)
+{
+  char *p, str[80];
+
+  printf("Enter a string: ");
+  p = gets(str);
+  if(p) /* if not null */
+    printf("%s %s", p, str);
+
+  return 0;
+}
+
+listing 19
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+
+  printf("Enter a string: ");
+  if(gets(str))  /* if not null */
+    printf("Here is your string: %s", str);
+
+  return 0;
+}
+
+listing 20
+char *p;
+
+p = gets(p); /* wrong!!! */
+
+listing 21
+#include <stdio.h>
+
+int main(void)
+{
+  puts("one");
+  puts("two");
+  puts("three");
+
+  return 0;
+}
+
+listing 22
+#include <stdio.h>
+
+int main(void)
+{
+  char *p, *q;
+
+  printf("Enter a string: ");
+  p = gets(q);
+  printf(p);
+
+  return 0;
+}
+
+listing 23
+%15.2f
+
+listing 24
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%.5d\n", 10);
+  printf("$%.2f\n", 99.95);
+  printf("%.10s", "Not all of this will be printed\n");
+
+  return 0;
+}
+
+listing 25
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<1000; i++)
+    printf("%10d %10d %10d\n", rand(), rand(), rand());
+
+  return 0;
+}
+
+listing 26
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%d %o %x %X\n", 90, 90, 90, 90);
+  printf("%e %E\n", 99.231, 99.231);
+
+  return 0;
+}
+
+listing 27
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  printf("%d %f\n%n", 100, 123.23, &i);
+  printf("%d characters output so far", i);
+
+  return 0;
+}
+
+listing 28
+%[ABC]
+
+listing 29
+%[A-Z]
+
+listing 30
+%[^0123456789]
+
+listing 31
+int first, second;
+scanf("%d%*c%d", &first, &second);
+
+listing 32
+555-2345
+
+listing 33
+scanf("%20s", str);
+
+listing 34
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+
+  /* Enter "this is a test" */
+  printf("Enter a string: ");
+  scanf("%s", str);
+  printf(str);
+
+  return 0;
+}
+
+listing 35
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+
+  printf("Enter letters, anything else to stop\n");
+  scanf("%[a-zA-Z]", str);
+
+  printf(str);
+
+  return 0;
+}
+
+listing 36
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+
+  printf("Enter letters and spaces\n");
+  scanf("%[a-zA-Z ]", str);
+  printf(str);
+
+  return 0;
+}
+
+listing 37
+#include <stdio.h>
+
+int main(void)
+{
+  int i, j;
+  char op;
+
+  printf("Enter operation: ");
+  scanf("%d%c%d", &i, &op, &j);
+
+  switch(op) {
+    case '+': printf("%d", i+j);
+      break;
+    case '-': printf("%d", i-j);
+      break;
+    case '/': if(j) printf("%d", i/j);
+      break;
+    case '*': printf("%d", i*j);
+  }
+
+  return 0;
+}
+
+listing 38
+scanf("%d %c%d", &i, &op, &j);
+
+listing 39
+#include <stdio.h>
+
+int main(void)
+{
+  int i, j;
+
+  printf("Enter an integer: ");
+  scanf("%3d%d", &i, &j);
+  printf("%d %d", i, j);
+
+  return 0;
+}
+
+listing 40
+#include <stdio.h>
+
+int main(void)
+{
+  int i, j;
+
+  printf("Enter a decimal number: ");
+  scanf("%d.%d", &i, &j);
+  printf("left part: %d, right part: %d", i, j);
+
+  return 0;
+}
+
+listing 41
+char ch;
+
+scanf("%2c", &ch);
+

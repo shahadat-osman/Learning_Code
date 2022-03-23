@@ -1,0 +1,777 @@
+listing 1
+union {
+  int i;
+  double d;
+} uvar;
+
+printf("%d", sizeof uvar);
+
+listing 2
+struct {
+  int i;
+  char str[80];
+  double balance;
+} svar;
+
+svar->i = 100;
+
+listing 3
+#include <stdio.h>
+
+int count;
+
+void f1(void);
+
+int main(void)
+{
+  int i;
+
+  f1(); /* set count's value */
+
+  for(i=0; i<count; i++)
+    printf("%d ", i);
+
+  return 0;
+}
+
+listing 4
+#include <stdlib.h>
+
+void f1(void)
+{
+  count = rand();
+}
+
+listing 5
+#include <stdlib.h>
+
+int count;
+
+void f1(void)
+{
+  count = rand();
+}
+
+listing 6
+#include <stdlib.h>
+
+extern int count;
+
+void f1(void)
+{
+  count = rand();
+}
+
+listing 7
+#include <stdio.h>
+
+int count;
+
+int main(void)
+{
+  extern int count; /* this refers to global count */
+
+  count = 10;
+  printf("%d", count);
+
+  return 0;
+}
+
+listing 8
+#include <stdio.h>
+
+void f(void);
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<10; i++) f();
+
+  return 0;
+}
+
+void f(void)
+{
+  static int count = 0;
+
+  count++;
+  printf("count is %d\n", count);
+}
+
+listing 9
+#include <stdio.h>
+#include <time.h>
+
+int i;  /* This will not be transformed into a
+           register variable because it is global.*/
+
+int main(void)
+{
+  register int j;
+
+  int k;
+  clock_t start, finish;
+
+  start = clock();
+  for(k=0; k<100; k++)
+    for(i=0; i<32000; i++) ;
+  finish = clock();
+  printf("Non-register loop: %ld ticks\n", finish - start);
+
+  start = clock();
+  for(k=0; k<100; k++)
+    for(j=0; j<32000; j++);
+  finish = clock();
+  printf("Register loop: %ld ticks\n", finish - start);
+
+  return 0;
+}
+
+listing 10
+#include <stdio.h>
+
+void f2(void);
+void f(void);
+
+int main(void)
+{
+  register int a, b;
+  .
+  .
+  .
+}
+
+void f(void)
+{
+  register int i, j;
+  .
+  .
+  .
+}
+
+void f2(void)
+{
+  register int j, k;
+  .
+  .
+  .
+}
+
+listing 11
+void myfunc(void)
+{
+  static int first = 1;
+
+  if(first) {  /* initialize the system */
+    rewind(fp);
+    a = 0;
+    loc = 0;
+    fprintf("System Initialized");
+    first = 0;
+  }
+  .
+  .
+  .
+}
+
+listing 12
+#include <stdio.h>
+
+void f(void);
+
+int main(void)
+{
+  f();
+
+  return 0;
+}
+
+void f(void)
+{
+  static int stop=0;
+
+  stop++;
+
+  if(stop==10) return;
+  printf("%d ", stop);
+  f(); /* recursive call */
+}
+
+listing 13
+#include <stdio.h>
+
+char str[80];
+
+void getname(void);
+
+int main(void)
+{
+  getname();
+  printf("Hello %s", str);
+
+  return 0;
+}
+
+listing 14
+#include <stdio.h>
+
+extern char str[80];
+
+void getname(void)
+{
+  printf("Enter your first name: ");
+  gets(str);
+}
+
+listing 15
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+  int i, j, k, m;
+
+  do {
+    printf("Enter a value: ");
+    scanf("%d", &i);
+
+    m = 0;
+    for(j=0; j<i; j++)
+      for(k=0; k<100; k++)
+        m = k + m;
+  } while(i>0);
+
+  return 0;
+}
+
+listing 16
+void sum_it (int value);
+
+listing 17
+register int i;
+int *p;
+
+p = &i;
+
+listing 18
+#include <stdio.h>
+
+int main(void)
+{
+  const int i = 10;
+
+  printf("%d", i); /* this is OK */
+
+  return 0;
+}
+
+listing 19
+#include <stdio.h>
+
+int main(void)
+{
+  const int i = 10;
+
+  i = 20; /* this is wrong */
+
+  printf("%d", i);
+
+  return 0;
+}
+
+listing 20
+#include <stdio.h>
+
+void pr_str(const char *p);
+
+int main(void)
+{
+  char str[80];
+
+  printf("Enter a string: ");
+  gets(str);
+
+  pr_str(str);
+
+  return 0;
+}
+
+void pr_str(const char *p)
+{
+  while(*p) putchar(*p++);
+}
+
+listing 21
+#include <stdio.h>
+#include <ctype.h>
+
+void pr_str(const char *p);
+
+int main(void)
+{
+  char str[80];
+
+  printf("Enter a string: ");
+  gets(str);
+  pr_str(str);
+
+  return 0;
+}
+
+void pr_str(const char *p)
+{
+  while(*p) {
+  *p = toupper(*p); /* this will not compile */
+    putchar(*p++);
+  }
+}
+
+listing 22
+volatile unsigned u;
+
+give_address_to_some_interrupt(&u);
+
+for(;;) { /* watch value of u */
+  printf("%d", u);
+  .
+  .
+  .
+
+listing 23
+enum color_type {red, green, yellow} color;
+
+listing 24
+enum color_type {red, green=9, yellow} color;
+
+listing 25
+enum color_type mycolor;
+
+listing 26
+#include <stdio.h>
+
+enum computer {keyboard, CPU, screen, printer};
+
+int main(void)
+{
+  enum computer comp;
+
+  comp = CPU;
+
+  printf("%d", comp);
+
+  return 0;
+}
+
+listing 27
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+enum transport {car, train, airplane, bus} tp;
+
+int main(void)
+{
+  printf("Press a key to select transport: ");
+
+  /* generate a new random number each time
+     the program is run
+  */
+  while(!kbhit()) rand();
+  getch(); /* read and discard character */
+
+  tp = rand() % 4;
+  switch(tp) {
+    case car: printf("car");
+      break;
+    case train: printf("train");
+      break;
+    case airplane: printf("airplane");
+      break;
+    case bus: printf("bus");
+  }
+
+  return 0;
+}
+
+listing 28
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+enum transport {car, train, airplane, bus} tp;
+
+char trans[][20] = {
+  "car", "train", "airplane", "bus"
+};
+
+int main(void)
+{
+  printf("Press a key to select transport: ");
+
+  /* Generate a new random number each time
+     the program is run
+  */
+  while(!kbhit()) rand();
+  getch(); /* read and discard character */
+
+  tp = rand() % 4;
+  printf("%s", trans[tp]);
+
+  return 0;
+}
+
+listing 29
+enum numbers {zero, one, two, three} num;
+
+printf("Enter a number: ");
+scanf("%d", &num);
+
+listing 30
+enum cars {Ford, Chrysler, GM} make;
+
+make = GM;
+printf("car is %s", make);
+
+listing 31
+#include <stdio.h>
+
+typedef signed char smallint;
+
+int main(void)
+{
+  smallint i;
+
+  for(i=0; i<10; i++)
+    printf("%d ", i);
+
+  return 0;
+}
+
+listing 32
+typedef int myint;
+
+listing 33
+typedef short int myint;
+
+listing 34
+typedef double subtotal;
+
+listing 35
+typedef int height;
+typedef height length;
+typedef length depth;
+
+depth d;
+
+listing 36
+enum e_type {one, two, three } ;
+
+typedef enum e_type mynums;
+
+mynums num; /* declare a variable */
+
+listing 37
+typedef balance float;
+
+listing 38
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  i = 100;
+  printf("initial value of i: %d\n", i);
+
+  i = i ^ 21987;
+  printf("i after first XOR: %d\n", i);
+
+  i = i ^ 21987;
+  printf("i after second XOR: %d\n", i);
+
+  return 0;
+}
+
+listing 39
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+  char ch;
+  int i;
+
+  printf("Enter a character: ");
+  ch = getche();
+  printf("\n");
+
+  /* display binary representation */
+  for(i=128; i>0; i=i/2)
+    if(i & ch) printf("1 ");
+    else printf("0 ");
+
+  return 0;
+}
+
+listing 40
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+  char ch;
+  int i;
+
+  ch = 'a';
+
+  /* display binary representation */
+  for(i=128; i>0; i=i/2)
+    if(i & ch) printf("1 ");
+    else printf("0 ");
+
+  /* reverse bit pattern */
+  ch = ~ch;
+  printf("\n");
+
+  /* display binary representation */
+  for(i=128; i>0; i=i/2)
+    if(i & ch) printf("1 ");
+    else printf("0 ");
+
+  return 0;
+}
+
+listing 41
+#include <stdio.h>
+
+int main(void)
+{
+  short i;
+
+  printf("Enter a number: ");
+  scanf("%hd", &i);
+
+  if(i & 32768) printf("Number is negative.\n");
+
+  return 0;
+}
+
+listing 42
+#include <stdio.h>
+
+int main(void)
+{
+  short i;
+
+  i = 1;
+  i = i | 32768;
+  printf("%hd", i);
+
+  return 0;
+}
+
+listing 43
+#include <stdio.h>
+
+void show_binary(unsigned u);
+
+int main(void)
+{
+  unsigned short u;
+
+  u = 45678;
+
+  show_binary(u);
+  u = u << 1;
+  show_binary(u);
+  u = u >> 1;
+  show_binary(u);
+
+  return 0;
+}
+
+void show_binary(unsigned u)
+{
+  unsigned n;
+
+  for(n=32768; n>0; n=n/2)
+    if(u & n) printf("1 ");
+    else printf("0 ");
+
+  printf("\n");
+}
+
+listing 44
+void show_binary(unsigned u)
+{
+  unsigned n;
+
+  for(n=32768; n; n=n>>1)
+    if(u & n) printf("1 ");
+    else printf("0 ");
+
+  printf("\n");
+}
+
+listing 45
+if(condition) var = exp1;
+else var = exp2;
+
+listing 46
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  printf("Enter a number: ");
+  scanf("%d", &i);
+
+  i = i>0 ? 1: -1;
+
+  printf("Outcome: %d", i);
+
+  return 0;
+}
+
+listing 47
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int main(void)
+{
+  int i;
+
+  while(!kbhit()) rand();
+
+  i = rand() %2 ? 1: 0;
+
+  if(i) printf("Heads");
+  else printf("Tails");
+
+  return 0;
+}
+
+listing 48
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int main(void)
+{
+  while(!kbhit()) rand();
+
+  rand()%2 ? printf("Heads") : printf("Tails");
+
+  return 0;
+}
+
+listing 49
+if(a>b) count = 100;
+else count = 0;
+
+listing 50
+i = j = k = 100;
+
+listing 51
+a = a + 3;
+
+listing 52
+a += 3;
+
+listing 53
+#include <stdio.h>
+
+int main(void)
+{
+  int i, j, k;
+
+  i = j = k = 99;
+
+  printf("%d %d %d", i, j, k);
+
+  return 0;
+}
+
+listing 54
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  /* count by 2s */
+  for(i=0; i<100; i+=2)
+    printf("%d ", i);
+
+  return 0;
+}
+
+listing 55
+#include <stdio.h>
+
+int main(void)
+{
+  int i = 1;
+
+  i <<= 3;  /* multiply by 2, 3 times */
+
+  printf("%d", i);
+
+  return 0;
+}
+
+listing 56
+x = x & y;
+
+listing 57
+for(i=0, j=0; i+j<count; i++, j++) . . .
+
+listing 58
+value = (count, 99, 33, 100);
+
+listing 59
+#include <stdio.h>
+
+int main(void)
+{
+  int i, j;
+
+  /* count to 49 */
+  for(i=0, j=100; i<j; i++, j--)
+    printf("%d ", i);
+
+  return 0;
+}
+
+listing 60
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  ch = getchar(), /* notice the comma here */
+  putchar(ch+1);
+
+  return 0;
+}
+
+listing 61
+i = (1, 2, 3);
+
+listing 62
+typedef long double bigfloat;
+
+listing 63
+c = c + 10;
+
+listing 64
+if(!done) count = 100;
+else count = 0;
+
+listing 65
+register FILE *fp;
+

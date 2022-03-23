@@ -1,0 +1,711 @@
+listing 1
+void myfunc(const int *i)
+{
+  *i = *i / 2;
+}
+
+listing 2
+a = 1;
+b = 1;
+c = 1;
+
+if(a<b) max = 100;
+else max = 0;
+
+i = i * 2;
+
+listing 3
+#include <stdio.h>
+
+#define SUM(i, j) i+j
+
+int main(void)
+{
+  int sum;
+
+  sum = SUM(10, 20);
+  printf("%d", sum);
+
+  return 0;
+}
+
+listing 4
+sum = SUM(10, 20);
+
+listing 5
+sum = 10+20;
+
+listing 6
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+#define RANGE(i, min, max) (i<min) || (i>max) ? 1 : 0
+
+int main(void)
+{
+  int r;
+
+  /* print random numbers between 1 and 100 */
+  do {
+    do {
+      r = rand();
+    } while(RANGE(r, 1, 100));
+    printf("%d ", r);
+  } while(!kbhit());
+
+  return 0;
+}
+
+listing 7
+#include <stdio.h>
+
+#define MAX(i, j) i>j ? i : j
+
+int main(void)
+{
+  printf("%d\n", MAX(1, 2));
+  printf("%d\n", MAX(1, -1));
+
+  /* this statement does not work correctly */
+  printf("%d\n", MAX(100 && -1, 0));
+
+  return 0;
+}
+
+listing 8
+100 && -1 > 0 ? 100 && -1 : 0
+
+listing 9
+100 && (-1 > 0) ? 100 && -1 : 0
+
+listing 10
+#define MAX(i, j) ((i)>(j)) ? (i) : (j)
+
+listing 11
+#include "stdio.h"
+
+int main(void)
+{
+  printf("This is a test");
+
+  return 0;
+}
+
+listing 12
+#include <stdio.h>
+#include "stdlib.h"
+
+int main(void)
+{
+  printf("This is a random number: %d", rand());
+
+  return 0;
+}
+
+listing 13
+#ifdef WIN32
+#if defined WIN32
+
+listing 14
+#include <stdio.h>
+
+/* define CHAR_SET as either 256 or 128 */
+#define CHAR_SET 256
+
+int main(void)
+{
+  int i;
+#if CHAR_SET ==256
+  printf("Displaying full ASCII character set plus extensions.\n");
+#else
+  printf("Displaying only ASCII character set.\n");
+#endif
+
+  for(i=0; i<CHAR_SET; i++)
+    printf("%c", i);
+
+  return 0;
+}
+
+listing 15
+/* Copy a file. */
+#include <stdio.h>
+#include <stdlib.h>
+
+#define DEBUG
+
+int main(int argc, char *argv[])
+{
+  FILE *from, *to;
+  char ch;
+
+  /* see if correct number of command line arguments */
+  if(argc!=3) {
+    printf("Usage: copy <source> <destination>\n");
+    exit(1);
+  }
+
+  /* open source file */
+  if((from = fopen(argv[1], "rb"))==NULL) {
+    printf("Cannot open source file.\n");
+    exit(1);
+  }
+
+  /*open destination file */
+  if((to = fopen (argv[2], "wb")) ==NULL) {
+    printf("Cannot open destination file.\n");
+    exit(1);
+  }
+
+  /* copy the file */
+  while(!feof(from)) {
+    ch = fgetc(from);
+    if(ferror(from)) {
+      printf("Error reading source file.\n");
+      exit(1);
+    }
+    if(!feof(from)) {
+      fputc(ch, to);
+#ifdef DEBUG
+      putchar(ch);
+#endif
+    }
+    if(ferror(to)) {
+      printf("Error writing destination file.\n");
+      exit(1);
+    }
+  }
+  fclose(from);
+  fclose(to);
+
+  return 0;
+}
+
+listing 16
+#include <stdio.h>
+#include <stdlib.h>
+
+/* DEBUG levels:
+          0: no debug
+          1: display byte read from source file
+          2. display byte written to destination file
+          3: display bytes read and bytes written
+*/
+#define DEBUG 2
+
+int main(int argc, char *argv[])
+{
+  FILE *in, *out;
+  unsigned char ch;
+
+  /* see if correct number of command line arguments */
+  if(argc!=4) {
+    printf("Usage: code <in> <out> <key>");
+    exit(1);
+  }
+
+  /* open input file */
+  if((in = fopen(argv[1], "rb"))==NULL) {
+    printf("Cannot open input file.\n");
+    exit(1);
+  }
+
+  /* open output file */
+  if((out = fopen(argv[2], "wb"))==NULL) {
+    printf("Cannot open output file.\n");
+    exit(1);
+  }
+
+  while(!feof(in)) {
+    ch = fgetc(in);
+#if DEBUG == 1 || DEBUG == 3
+    putchar(ch);
+#endif
+    ch = *argv[3] ^ ch;
+#if DEBUG >= 2
+    putchar(ch);
+#endif
+    if(!feof(in)) fputc(ch, out);
+  }
+
+  fclose(in);
+  fclose(out);
+
+  return 0;
+}
+
+listing 17
+#define NUM 2
+.
+.
+.
+#if NUM == 1
+  printf("NUM is 1");
+#elif NUM == 2
+  printf("NUM is 2");
+#elif NUM == 3
+  printf("NUM is 3");
+#elif NUM == 4
+  printf("NUM is 4");
+#endif
+
+listing 18
+#include <stdio.h>
+
+#define TESTPROJECT 29
+
+#if defined TESTPROJECT
+int main(void) 
+{
+  printf("This is a test.\n");
+
+  return 0;
+}
+#endif
+
+listing 19
+#define MIKE
+
+#ifdef !MIKE
+.
+.
+.
+#endif
+
+listing 20
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  i = 10;
+#error This is an error message.
+  printf("%d", i); /* this line will not be compiled */
+
+  return 0;
+}
+
+listing 21
+#include <stdio.h>
+
+#define DOG
+
+int main(void)
+{
+#ifdef DOG
+  printf("DOG is defined.\n");
+#endif
+
+#undef DOG
+
+#ifdef DOG
+  printf("This line is not compiled.\n");
+#endif
+
+  return 0;
+}
+
+listing 22
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+/* reset line number to 1000 and file name to
+   myprog.c
+*/
+#line 1000 "myprog.c"
+#error Check the line number and file name.
+
+  return 0;
+}
+
+listing 23
+#include <stdio.h>
+
+int main(void)
+{
+  printf("Compiling %s, line: %d, on %s, at %s",
+           __FILE__, __LINE__, __DATE__, 
+           __TIME__);
+
+  return 0;
+}
+
+listing 24
+#include <stdio.h>
+
+int main(void)
+{
+#line 100 "myprog.c"
+  printf("Compiling %s, line: %d, on %s, at %s",
+           __FILE__, __LINE__, __DATE__, 
+           __TIME__);
+
+  return 0;
+}
+
+listing 25
+#include <stdio.h>
+
+#define MKSTRING(str) # str
+
+int main(void)
+{
+  int value;
+
+  value = 10;
+
+  printf("%s is %d", MKSTRING(value), value);
+
+  return 0;
+}
+
+listing 26
+#include <stdio.h>
+
+#define output(i) printf("%d %d\n", i ## 1, i ## 2)
+
+int main(void)
+{
+  int count1, count2;
+  int i1, i2;
+
+  count1 = 10;
+  count2 = 20;
+  i1 = 99;
+  i2 = -10;
+
+  output(count);
+  output(i);
+
+  return 0;
+}
+
+listing 27
+#include <stdio.h>
+
+#define JOIN(a, b) a ## b
+
+int main(void)
+{
+  printf(JOIN("one ", "two"));
+
+  return 0;
+}
+
+listing 28
+int (*p) (int x, int y);
+
+listing 29
+p = sum;
+
+listing 30
+result = (*p) (10, 20);
+
+listing 31
+result = p(10, 20);
+
+listing 32
+#include <stdio.h>
+
+int sum(int a, int b);
+
+int main(void)
+{
+  int (*p) (int x, int y);
+  int result;
+
+  p = sum; /* get address of sum() */
+
+  result = (*p) (10, 20);
+  printf("%d", result);
+
+  return 0;
+}
+
+int sum(int a, int b)
+{
+  return a+b;
+}
+
+listing 33
+#include <stdio.h>
+
+int sum(int a, int b);
+int subtract(int a, int b);
+int mul(int a, int b);
+int div(int a, int b);
+
+int (*p[4]) (int x, int y);
+
+int main(void)
+{
+  int result;
+  int i, j, op;
+
+  p[0] = sum; /* get address of sum() */
+  p[1] = subtract; /* get address of subtract() */
+  p[2] = mul; /* get address of mul() */
+  p[3] = div; /* get address of div() */
+
+  printf("Enter two numbers: ");
+  scanf("%d%d", &i, &j);
+  printf("0: Add, 1: Subtract, 2: Multiply, 3: Divide\n");
+  do {
+    printf("Enter number of operation: ");
+    scanf("%d", &op);
+  } while(op<0 || op>3);
+
+  result = (*p[op]) (i, j);
+  printf("%d", result);
+
+  return 0;
+}
+
+int sum(int a, int b)
+{
+  return a+b;
+}
+
+int subtract(int a, int b)
+{
+  return a-b;
+}
+
+int mul(int a, int b)
+{
+  return a*b;
+}
+
+int div(int a, int b)
+{
+  if(b) return a/b;
+  else return 0;
+}
+
+listing 34
+#include <stdio.h>
+
+int sum(int a, int b);
+int subtract(int a, int b);
+int mul(int a, int b);
+int div(int a, int b);
+
+/* initialize the pointer array */
+int (*p[4]) (int x, int y) = {
+  sum, subtract, mul, div
+} ;
+
+int main(void)
+{
+  int result;
+  int i, j, op;
+
+  printf("Enter two numbers: ");
+  scanf("%d%d", &i, &j);
+  printf("0: Add, 1: Subtract, 2: Multiply, 3: Divide\n");
+  do {
+    printf("Enter number of operation: ");
+    scanf("%d", &op);
+  } while(op<0 || op>3);
+
+  result = (*p[op]) (i, j);
+  printf("%d", result);
+
+  return 0;
+}
+
+int sum(int a, int b)
+{
+  return a+b;
+}
+
+int subtract(int a, int b)
+{
+  return a-b;
+}
+
+int mul(int a, int b)
+{
+  return a*b;
+}
+
+int div(int a, int b)
+{
+  if(b) return a/b;
+  else return 0;
+}
+
+listing 35
+#include <stdio.h>
+#include <stdlib.h>
+
+int comp(const void *i, const void *j);
+
+int main(void)
+{
+  int sort[100], i;
+
+  for(i=0; i<100; i++)
+    sort[i] = rand();
+
+  qsort(sort, 100, sizeof(int), comp);
+
+  for(i=0; i<100; i++)
+    printf("%d\n", sort[i]);
+
+  return 0;
+}
+
+int comp(const void *i, const void *j)
+{
+  return *(int*)i - *(int*)j;
+}
+
+listing 36
+p = malloc(SIZE);
+
+if(!p) {
+  printf("Allocation Error");
+  exit(1);
+}
+
+listing 37
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  char *p;
+
+  p = malloc(80);
+
+  if(!p) {
+    printf("Allocation Failed");
+    exit(1);
+  }
+
+  printf("Enter a string: ");
+  gets(p);
+  printf(p);
+  free(p);
+
+  return 0;
+}
+
+listing 38
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  char *p;
+  long l;
+
+  l = 0;
+  do {
+    p = malloc(1000);
+    if(p) l += 1000;
+  } while(p);
+
+  printf("Approximately %ld bytes of free memory.", l);
+
+  return 0;
+}
+
+listing 39
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+
+  int i;
+  double *p;
+  FILE *fp;
+
+  /* get memory */
+  p = malloc(10 * sizeof(double));
+  if(!p) {
+    printf("Allocation Error");
+    exit(1);
+  }
+
+  /* generate 10 random numbers */
+  for(i=0; i<10; i++)
+    p[i] = (double) rand();
+
+  if((fp = fopen("myfile", "wb"))==NULL) {
+    printf("Cannot open file.\n");
+    exit(1);
+  }
+
+  /* write the entire array in one step */
+  if(fwrite(p, 10*sizeof(double), 1, fp) != 1) {
+    printf("Write Error.\n");
+    exit(1);
+  }
+  fclose(fp);
+
+  free(p); /* memory not needed now */
+
+  /*
+    imagine something transpires here
+    .
+    .
+    .
+  */
+
+  /* get memory again */
+  p = malloc(10 * sizeof(double));
+  if(!p) {
+    printf("Allocation Error");
+    exit(1);
+  }
+
+  if((fp = fopen("myfile", "rb"))==NULL) {
+    printf("Cannot open file.\n");
+    exit(1);
+  }
+  /* read the entire array in one step */
+  if(fread(p, 10*sizeof(double), 1, fp) != 1) {
+    printf("Read Error.\n");
+    exit(1);
+  }
+  fclose(fp);
+
+  /* display the array */
+  for(i=0; i<10; i++) printf("%f ", p[i]);
+  free(p);
+
+  return 0;
+}
+
+listing 40
+p = malloc(10);
+
+for(i=0; i<100; i) p[i] = i;
+
+listing 41
+char *p;
+
+*p = malloc(10);
+
+gets(p);
+
+listing 42
+if(!(j%2)) {
+  printf("j = %d\n", j);
+  j = 0;
+}
+
+listing 43
+char code_it(char c)
+{
+  return ~c;
+}
+

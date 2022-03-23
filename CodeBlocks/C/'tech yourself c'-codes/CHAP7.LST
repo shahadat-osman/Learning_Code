@@ -1,0 +1,563 @@
+listing 1
+int i, *p;
+
+p = &i;
+*p = 19;
+
+listing 2
+char *p = "this is a string";
+
+listing 3
+char str[8];
+
+strcpy(str, "ABCDEFG");
+printf("%c", *(str+2));
+
+listing 4
+#include <stdio.h>
+
+double volume(); /* old-style forward declaration for volume() */
+
+int main(void)
+{
+  double vol;
+
+  vol = volume(12.2, 5.67, 9.03);
+  printf("Volume: %f", vol);
+
+  return 0;
+}
+
+/* Compute the volume of a cube. */
+double volume(double s1, double s2, double s3)
+{
+  return s1 * s2 * s3;
+}
+
+listing 5
+volume(120.2, 99.3); /* missing last arg */
+
+listing 6
+void line()
+{
+  int i;
+
+  for(i=0; i<80; i++) printf(".");
+}
+
+listing 7
+void line();
+
+listing 8
+void line(void);
+
+listing 9
+void line(void)
+{
+  int i;
+
+  for(i=0; i<80; i++) printf(".");
+}
+
+listing 10
+int myfunc(int a, ...);
+
+listing 11
+#include <stdio.h>
+
+/* this is volume()'s full prototype */
+double volume(double s1, double s2, double s3);
+
+int main(void)
+{
+  double vol;
+
+  vol = volume(12.2, 5.67, 9.03, 10.2); /* error */
+  printf("Volume: %f", vol);
+
+  return 0;
+}
+
+/* Compute the volume of a cube. */
+double volume(double s1, double s2, double s3)
+{
+  return s1 * s2 * s3;
+}
+
+listing 12
+#include <stdio.h>
+
+/* declare getnum() prior to its first use */
+float getnum(void)
+{
+  float x;
+
+  printf("Enter a number: ");
+  scanf("%f", &x);
+  return x;
+}
+
+int main(void)
+{
+  float i;
+
+  i = getnum();
+  printf("%f", i);
+
+  return 0;
+}
+
+listing 13
+#include <stdio.h>
+/* math.h is intentionally not included */
+
+int main(void)
+{
+  double answer;
+
+  answer = sqrt(9.0);
+  printf("%f", answer);
+
+  return 0;
+}
+
+listing 14
+#include <stdio.h>
+
+int get_a_char(void);  
+
+int main(void)
+{
+  char ch;
+
+  ch = get_a_char();
+  printf("%c", ch);
+
+  return 0;
+}
+
+int get_a_char(void)
+{
+  return 'a';
+}
+
+listing 15
+#include <stdio.h>
+
+int *init(int x);
+int count;
+
+int main(void)
+{
+  int *p;
+
+  p = init(110); /* return pointer */
+
+  printf("count (through p) is %d", *p);
+
+  return 0;
+}
+
+int *init(int x)
+{
+  count = x;
+
+  return &count; /* return a pointer */
+}
+
+listing 16
+int main(void) { ...
+
+listing 17
+void main(void) { ...
+
+listing 18
+#include <stdio.h>
+
+double myfunc();
+
+int main(void)
+{
+  printf("%f", myfunc(10.2));
+
+  return 0;
+}
+
+double myfunc(double num)
+{
+  return num / 2.0;
+}
+
+listing 19
+#include <stdio.h>
+
+void recurse(int i);
+
+int main(void)
+{
+  recurse(0);
+
+  return 0;
+}
+
+void recurse(int i)
+{
+  if(i<10) {
+    recurse(i+1); /* recursive call */
+    printf("%d ", i);
+  }
+}
+
+listing 20
+#include <stdio.h>
+
+void recurse(int i);
+
+int main(void)
+{
+  recurse(0);
+
+  return 0;
+}
+
+void recurse(int i)
+{
+  if(i<10) {
+    printf("%d ", i);
+    recurse(i+1);
+  }
+}
+
+listing 21
+#include <stdio.h>
+
+void rcopy(char *s1, char *s2);
+
+int main(void)
+{
+  char str[80];
+
+  rcopy(str, "this is a test");
+  printf(str);
+
+  return 0;
+}
+
+/* Copy s2 to s1 using recursion. */
+void rcopy(char *s1, char *s2)
+{
+  if(*s2) { /* if not at end of s2 */
+    *s1++ = *s2++;
+    rcopy(s1, s2);
+  }
+  else *s1 = '\0'; /* null terminate the string */
+}
+
+listing 22
+#include <stdio.h>
+
+void f2(int b);
+void f1(int a);
+
+int main(void)
+{
+  f1(30);
+
+  return 0;
+}
+
+void f1(int a)
+{
+  if(a) f2(a-1);
+  printf("%d ", a);
+}
+
+void f2(int b)
+{
+  printf(".");
+  if(b) f1(b-1);
+}
+
+listing 23
+void f(void)
+{
+  int i;
+
+  printf("in f() \n");
+
+  /* call f() 10 times */
+  for(i=0; i<10; i++) f( );
+}
+
+listing 24
+#include <stdio.h>
+
+void swap(int *i, int *j);
+
+int main(void)
+{
+  int num1, num2;
+
+  num1 = 100;
+  num2 = 800;
+
+  printf("num1: %d num2: %d\n", num1, num2);
+  swap(&num1, &num2);
+  printf("num1: %d num2: %d\n", num1, num2);
+
+  return 0;
+}
+
+/* Exchange the values pointed to by two integer pointers. */
+void swap(int *i, int *j)
+{
+  int temp;
+
+  temp = *i;
+  *i = *j;
+  *j = temp;
+}
+
+listing 25
+#include <stdio.h>
+
+void f1(int num[5]), f2(int num[]), f3(int *num);
+
+int main(void)
+{
+  int count[5] = {1, 2, 3, 4, 5};
+
+  f1(count);
+  f2(count);
+  f3(count);
+
+  return 0;
+}
+
+/* parameter specified as array */
+void f1(int num[5])
+{
+  int i;
+
+  for(i=0; i<5; i++) printf("%d ", num[i]);
+}
+
+/* parameter specified as unsized array */
+void f2(int num[])
+{
+  int i;
+
+  for(i=0; i<5; i++) printf("%d ", num[i]);
+}
+
+/* parameter specified as pointer */
+void f3(int *num)
+{
+  int i;
+
+  for(i=0; i<5; i++) printf("%d ", num[i]);
+}
+
+listing 26
+#include <stdio.h>
+
+void prompt(char *msg, int *num);
+
+int main(void)
+{
+  int i;
+  prompt("Enter a num: ", &i);
+  printf("Your number is: %d", i);
+
+  return 0;
+}
+
+void prompt(char *msg, int *num)
+{
+  printf(msg);
+  scanf("%d", num);
+}
+
+listing 27
+#include <stdio.h>
+
+myfunc(int num, int min, int max);
+
+int main(void)
+{
+   int i;
+
+  printf("Enter a number between 1 and 10: ");
+  myfunc(&i, 1, 10);
+
+  return 0;
+}
+
+void myfunc(int num, int min, int max)
+{
+  do {
+    scanf("%d", num);
+  } while(*num<min || *num>max);
+}
+
+listing 28
+char *argv[];
+
+listing 29
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int i;
+
+  for(i=1; i<argc; i++) printf("%s ", argv[i]);
+
+  return 0;
+}
+
+listing 30
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  int i;
+  double d;
+  long l;
+
+  i = atoi(argv[1]);
+  l = atol(argv[2]);
+  d = atof(argv[3]);
+
+  printf("%d %ld %f", i, l, d);
+
+  return 0;
+}
+
+listing 31
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  double pounds;
+
+  pounds = atof(argv[1]) / 16.0;
+  printf("%f pounds", pounds);
+
+  return 0;
+}
+
+listing 32
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  double pounds;
+
+  if(argc!=2) {
+    printf("Usage: CONVERT <ounces>\n");
+    printf("Try Again");
+  }
+  else {
+    pounds = atof(argv[1]) / 16.0;
+    printf("%f pounds", pounds);
+  }
+
+  return 0;
+}
+
+listing 33
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  double pounds;
+
+  if(argc!=2) {
+    printf("Usage: CONVERT <ounces>\n");
+    printf("Try Again");
+    exit(1); /* stop the program */
+  }
+
+  pounds = atof(argv[1]) / 16.0;
+  printf("%f pounds", pounds);
+
+  return 0;
+}
+
+listing 34
+float f(char ch, long size, double max)
+{
+  .
+  .
+  .
+}
+
+listing 35
+float f(ch, size, max)
+char ch;
+long size;
+double max;
+{
+  .
+  .
+  .
+}
+
+listing 36
+myfunc(i, j, k)
+int i, j, k;
+{
+.
+.
+.
+
+listing 37
+#include <stdio.h>
+
+int area(int l, int w); 
+
+int main(void)
+{
+  printf("area is %d", area(10, 13));
+  return 0;
+}
+
+int area(l, w)
+int l, w;
+{
+  return l * w;
+}
+
+listing 38
+#include <stdio.h>
+
+double f_to_m(double f);
+
+int main(void)
+{
+  double feet;
+
+  printf("Enter feet: ");
+  scanf("%lf", &feet);
+  printf("Meters: %f", f_to_m(feet));
+
+  return 0;
+}
+
+double f_to_m(double f)
+{
+  return f / 3.28;
+}
+
+listing 39
+double myfunc(int x, int y, char ch)
+{
+  .
+  .
+  .
+}
+

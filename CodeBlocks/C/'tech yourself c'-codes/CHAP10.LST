@@ -1,0 +1,971 @@
+listing 1
+struct catalog  {
+  char name[40];    /* author name */
+  char title[40];   /* title */
+  char pub[40];     /* publisher */
+  unsigned date;    /* copyright date */
+  unsigned char ed; /* edition */
+} card;
+
+listing 2
+card.date = 1776;
+
+listing 3
+printf("Copyright date: %u", card.date);
+
+listing 4
+scanf("%u", &card.date);
+
+listing 5
+gets(card.name);
+printf("%s", card.title);
+
+listing 6
+printf("%c", card.title[2]);
+
+listing 7
+struct catalog varl, var2, var3;
+
+listing 8
+struct {
+  int a;
+  char ch;
+} var1, var2;
+
+listing 9
+struct catalog cat[100];
+
+listing 10
+cat[0]
+
+listing 11
+cat[33].ed = 2;
+
+listing 12
+struct s_type {
+  int a;
+  float f;
+} var1, var2;
+
+var1.a = 10;
+var1.f = 100.23;
+
+var2 = var1;
+
+listing 13
+#include <stdio.h>
+
+struct s_type {
+  int i;
+  char ch;
+  double d;
+  char str[80];
+} s;
+
+int main(void)
+{
+  printf("Enter an integer: ");
+  scanf("%d:", &s.i);
+  printf("Enter a character: ");
+  scanf(" %c", &s.ch);
+  printf("Enter a floating point number: ");
+  scanf("%lf", &s.d);
+  printf("Enter a string: ");
+  scanf("%s", s.str);
+
+  printf("%d %c %f %s", s.i, s.ch, s.d, s.str);
+
+  return 0;
+}
+
+listing 14
+#include <stdio.h>
+
+struct s_type {
+  int i;
+  char ch;
+  int *p;
+  double d;
+} s;
+
+int main(void)
+{
+  printf("s_type is %d bytes long", sizeof(struct s_type));
+
+  return 0;
+}
+
+listing 15
+/* An electronic card catalog. */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+int menu(void);
+void display(int i);
+void author_search(void);
+void title_search(void);
+void enter(void);
+void save(void);
+void load(void);
+
+struct catalog {
+  char name[80];    /* author name */
+  char title[80];   /* title */
+  char pub[80];     /* publisher */
+  unsigned date;    /* copyright date */
+  unsigned char ed; /* edition */
+} cat[MAX];
+
+int top = 0; /* last location used */
+
+int main(void)
+{
+  int choice;
+
+  load(); /* read in catalog */
+
+  do {
+    choice = menu();
+    switch(choice) {
+      case 1: enter(); /* enter books */
+        break;
+      case 2: author_search(); /* search by author */
+        break;
+      case 3: title_search(); /* search by title */
+        break;
+      case 4: save();
+    }
+  } while(choice!=5);
+
+  return 0;
+}
+
+/* Return a menu selection. */
+menu(void)
+{
+  int i;
+  char str[80];
+
+  printf("Card catalog:\n");
+  printf("  1. Enter\n");
+  printf("  2. Search by Author\n");
+  printf("  3. Search by Title\n");
+  printf("  4. Save catalog\n");
+  printf("  5. Quit\n");
+
+  do {
+    printf("Choose your selection: ");
+    gets(str);
+    i = atoi(str);
+    printf("\n");
+  } while(i<1 || i>5);
+
+  return i;
+}
+
+/* Enter books into database. */
+void enter(void)
+{
+  int i;
+  char temp[80];
+
+  for(i=top; i<MAX; i++) {
+    printf("Enter author name (ENTER to quit): ");
+    gets(cat[i].name);
+    if(!*cat[i].name) break;
+    printf("Enter title: ");
+    gets(cat[i].title);
+    printf("Enter publisher: ");
+    gets(cat[i].pub);
+    printf("Enter copyright date: ");
+    gets(temp);
+    cat[i].date = (unsigned) atoi(temp);
+    printf("Enter edition: ");
+    gets(temp);
+    cat[i].ed = (unsigned char) atoi(temp);
+  }
+  top = i;
+}
+
+/* Search by author. */
+void author_search(void)
+{
+  char name[80];
+  int i, found;
+
+  printf("Name: ");
+  gets(name);
+
+  found = 0;
+  for(i=0; i<top; i++)
+    if(!strcmp(name, cat[i].name)) {
+      display(i);
+      found = 1;
+      printf("\n");
+    }
+
+  if(!found) printf("Not Found\n");
+}
+
+/* Search by title. */
+void title_search(void)
+{
+  char title[80];
+  int i, found;
+
+  printf("Title: ");
+  gets(title);
+
+  found = 0;
+  for(i=0; i<top; i++)
+    if(!strcmp(title, cat[i].title)) {
+      display(i);
+      found = 1;
+      printf("\n");
+    }
+  if(!found) printf("Not Found\n");
+}
+
+/* Display catalog entry. */
+void display(int i)
+{
+  printf("%s\n", cat[i].title);
+  printf("by %s\n", cat[i].name);
+  printf("Published by %s\n", cat[i].pub);
+  printf("Copyright: %u, %u edition\n", cat[i].date, 
+          cat[i].ed);
+}
+
+/* Load the catalog file. */
+void load(void)
+{
+  FILE *fp;
+
+  if((fp = fopen("catalog", "rb"))==NULL) {
+    printf("Catalog file not on disk.\n");
+    return;
+  }
+
+  if(fread(&top, sizeof top, 1, fp) != 1) {  /* read count */
+    printf("Error reading count.\n");
+    exit(1);
+  } 
+  if(fread(cat, sizeof cat, 1, fp) != 1) { /* read data */
+    printf("Error reading catalog data.\n");
+    exit(1);
+  } 
+
+  fclose(fp);
+}
+
+/* Save the catalog file. */
+void save(void)
+{
+  FILE *fp;
+
+  if((fp = fopen("catalog", "wb"))==NULL) {
+    printf("Cannot open catalog file.\n");
+    exit(1);
+  }
+
+  if(fwrite(&top, sizeof top, 1, fp) != 1) {  /* write count */
+    printf("Error writing count.\n");
+    exit(1);
+  } 
+  if(fwrite(cat, sizeof cat, 1, fp) != 1) { /* write data */
+    printf("Error writing catalog data.\n");
+    exit(1);
+  } 
+
+  fclose(fp);
+}
+
+listing 16
+/* Load the catalog file. */
+void load(void)
+{
+  FILE *fp;
+  int i;
+
+  if((fp = fopen("catalog", "rb"))==NULL) {
+    printf("Catalog file not on disk.\n");
+    return;
+  }
+
+  if(fread(&top, sizeof top, 1, fp) != 1) {  /* read count */
+    printf("Error reading count.\n");
+    exit(1);
+  } 
+  for(i=0; i<=top; i++) /* read data */
+    if(fread(&cat[i], sizeof(struct catalog), 1, fp)!= 1) {
+      printf("Error reading catalog data.\n");
+      exit(1);
+    } 
+
+  fclose(fp);
+}
+
+/* Save the catalog file. */
+void save(void)
+{
+  FILE *fp;
+  int i;
+
+  if((fp = fopen("catalog", "wb"))==NULL) {
+    printf("Cannot open catalog file.\n");
+    exit(1);
+  }
+
+  if(fwrite(&top, sizeof top, 1, fp) != 1) {  /* write count */
+    printf("Error writing count.\n");
+    exit(1);
+  } 
+  for(i=0; i<=top; i++) /* write data */
+    if(fwrite(&cat[i], sizeof(struct catalog), 1, fp)!= 1) {
+      printf("Error writing catalog data.\n");
+      exit(1);
+    } 
+
+  fclose(fp);
+}
+
+listing 17
+#include <stdio.h>
+
+int main(void)
+{
+  struct s_type {
+    int i;
+    int j;
+  } s;
+
+  int i;
+
+  i = 10;
+  s.i = 100;
+  s.j = 101;
+
+  printf("%d %d %d", i, s.i, s.j);
+
+  return 0;
+}
+
+listing 18
+#include <stdio.h>
+
+struct s_type {
+  int i;
+  double d;
+};
+
+struct s_type f(void);
+
+int main(void)
+{
+  struct s_type var1;
+
+  var1 = f();
+  printf("%d %f", var1.i, var1.d);
+
+  return 0;
+}
+
+struct s_type f(void)
+{
+  struct s_type temp;
+
+  temp.i = 100;
+  temp.d = 123.23;
+
+  return temp;
+}
+
+listing 19
+#include <stdio.h>
+
+struct s_type {
+  int i;
+  double d;
+};
+
+void f(struct s_type temp);
+
+int main(void)
+{
+  struct s_type var1;
+
+  var1.i = 99;
+  var1.d = 98.6;
+  f(var1);
+
+  return 0;
+}
+
+void f(struct s_type temp)
+{
+  printf("%d %f", temp.i, temp.d);
+}
+
+listing 20
+struct s_type {
+  int i;
+  long l;
+  char str[80];
+} s;
+.
+.
+.
+
+i = 10;
+
+listing 21
+struct s_type {
+  int i;
+  char str[80];
+} s, *p;
+
+listing 22
+p = &s:
+
+listing 23
+p->i = 1;
+
+listing 24
+#include <stdio.h>
+#include <string.h>
+
+struct s_type {
+  int i;
+  char str[80];
+} s, *p;
+
+int main(void)
+{
+  p = &s;
+
+  s.i = 10;  /* this is functionally the same */
+  p->i = 10; /* as this */
+  strcpy(p->str, "I like structures.");
+
+  printf("%d %d %s", s.i, p->i, p->str);
+
+  return 0;
+}
+
+listing 25
+struct tm {
+  int tm_sec;   /* seconds, 0-61 */
+  int tm_min;   /* minutes, 0-59; */
+  int tm_hour;  /* hours, 0-23 */
+  int tm_mday;  /* day of the month, 1-31*/;
+  int tm_mon;   /* months since Jan, 0-11 */
+  int tm_year;  /* years from 1900 */
+  int tm_wday;  /* days since Sunday, 0-6*/
+  int tm_yday;  /* days since Jan 1,  0-365 */
+  int tm_isdst; /* Daylight Saving Time indicator */
+};
+
+listing 26
+#include <stdio.h>
+#include <time.h>
+
+int main(void)
+{
+  struct tm *systime;
+  time_t t;
+
+  t = time(NULL);
+  systime = localtime(&t);
+
+  printf("Time is %.2d:%.2d:%.2d\n", systime->tm_hour,
+         systime->tm_min, systime->tm_sec);
+  printf("Date: %.2d/%.2d/%.2d", systime->tm_mon+1,
+         systime->tm_mday, systime->tm_year);
+
+  return 0;
+}
+
+listing 27
+struct s_type {
+  int a;
+  int b;
+} s, *p
+
+int main(void)
+{
+  p = &s;
+
+  p.a = 100;
+.
+.
+.
+
+listing 28
+#define NUM_ON_LINE 10
+
+struct worker {
+  char name[80];
+  int avg_units_per_hour;
+  int avg_errs_per_hour;
+};
+
+struct asm_line {
+  int product_code;
+  double material_cost;
+  struct worker wkers[NUM_ON_LINE];
+} line1, line2;
+
+listing 29
+line1.wkers[1].avg_units_per_hour = 12;
+
+listing 30
+/* An electronic card catalog -- 3rd Improvement. */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+int menu(void);
+void display(int i);
+void author_search(void);
+void title_search(void);
+void enter(void);
+void save(void);
+void load(void);
+
+struct book_type {
+  unsigned date;    /* copyright date */
+  unsigned char ed; /* edition */
+  unsigned pages;   /* length of book */
+} ;
+
+struct catalog {
+  char name[80];  /* author name */
+  char title[80]; /* title */
+  char pub[80];   /* publisher */
+  struct book_type book; /* mechanical info */
+} cat[MAX];
+
+int top = 0; /* last location used */
+
+int main(void)
+{
+  int choice;
+
+  load(); /* read in catalog */
+
+  do {
+    choice = menu();
+    switch(choice) {
+      case 1: enter(); /* enter books */
+        break;
+      case 2: author_search(); /* search by author */
+        break;
+      case 3: title_search(); /* search by title */
+        break;
+      case 4: save();
+    }
+  } while(choice!=5);
+
+  return 0;
+}
+
+/* Return a menu selection. */
+menu(void)
+{
+  int i;
+  char str[80];
+
+  printf("Card catalog:\n");
+  printf("  1. Enter\n");
+  printf("  2. Search by Author\n");
+  printf("  3. Search by Title\n");
+  printf("  4. Save catalog\n");
+  printf("  5. Quit\n");
+
+  do {
+    printf("Choose your selection: ");
+    gets(str);
+    i = atoi(str);
+    printf("\n");
+  } while(i<1 || i>5);
+
+  return i;
+}
+
+/* Enter books into database. */
+void enter(void)
+{
+  int i;
+  char temp[80];
+
+  for(i=top; i<MAX; i++) {
+    printf("Enter author name (ENTER to quit): ");
+    gets(cat[i].name);
+    if(!*cat[i].name) break;
+    printf("Enter title: ");
+    gets(cat[i].title);
+    printf("Enter publisher: ");
+    gets(cat[i].pub);
+    printf("Enter copyright date: ");
+    gets(temp);
+    cat[i].book.date = (unsigned) atoi(temp);
+    printf("Enter edition: ");
+    gets(temp);
+    cat[i].book.ed = (unsigned char) atoi(temp);
+    printf("Enter number of pages: ");
+    gets(temp);
+    cat[i].book.pages = (unsigned) atoi(temp);
+  }
+  top = i;
+}
+
+/* Search by author. */
+void author_search(void)
+{
+  char name[80];
+  int i, found;
+
+  printf("Name: ");
+  gets(name);
+
+  found = 0;
+  for(i=0; i<top; i++)
+    if(!strcmp(name, cat[i].name)) {
+    display(i);
+    found = 1;
+    printf("\n");
+  }
+
+  if(!found) printf("Not Found\n");
+}
+
+/* Search by title. */
+void title_search(void)
+{
+  char title[80];
+  int i, found;
+
+  printf("Title: ");
+  gets(title);
+
+  found = 0;
+
+  for(i=0; i<top; i++)
+    if(!strcmp(title, cat[i].title)) {
+     display(i);
+     found = 1;
+     printf("\n");
+    }
+  if(!found) printf("Not Found\n");
+}
+
+/* Display catalog entry. */
+void display(int i)
+{
+  printf("%s\n", cat[i].title);
+  printf("by %s\n", cat[i].name);
+  printf("Published by %s\n", cat[i].pub);
+  printf("Copyright: %u, edition: %u\n", 
+         cat[i].book.date, cat[i].book.ed);
+  printf("Pages: %u\n", cat[i].book.pages);
+}
+
+/* Load the catalog file. */
+void load(void)
+{
+  FILE *fp;
+
+  if((fp = fopen("catalog", "rb"))==NULL) {
+    printf("Catalog file not on disk.\n");
+    return;
+  }
+
+  if(fread(&top, sizeof top, 1, fp) != 1) {  /* read count */
+    printf("Error reading count.\n");
+    exit(1);
+  } 
+  if(fread(cat, sizeof cat, 1, fp) != 1) { /* read data */
+    printf("Error reading catalog data.\n");
+    exit(1);
+  } 
+
+  fclose(fp);
+}
+
+/* Save the catalog file. */
+void save(void)
+{
+  FILE *fp;
+
+  if((fp = fopen("catalog", "wb"))==NULL) {
+    printf("Cannot open catalog file.\n");
+    exit(1);
+  }
+
+  if(fwrite(&top, sizeof top, 1, fp) != 1) {  /* write count */
+    printf("Error writing count.\n");
+    exit(1);
+  } 
+  if(fwrite(cat, sizeof cat, 1, fp) != 1) { /* write data */
+    printf("Error writing catalog data.\n");
+    exit(1);
+  } 
+
+  fclose(fp);
+}
+
+listing 31
+struct b_type {
+  unsigned department: 3;  /* up to 7 departments */
+  unsigned instock: 1;     /* 1 if in stock, 0 if out */
+  unsigned backordered: 1; /* 1 if backordered, 0 if not */
+  unsigned lead_time: 3;   /* order lead time in months */
+} inv[MAX_ITEM];
+
+listing 32
+inv[9].department = 3;
+
+listing 33
+if(!inv[4].instock) printf("Out of Stock");
+else printf("In Stock");
+
+listing 34
+struct b_type {
+  int a: 2;
+  int b: 3;
+} ;
+
+listing 35
+struct b_type {
+  char name[40];           /* name of item */
+  unsigned department: 3;  /* up to 7 departments */
+  unsigned instock: 1;     /* 1 if in stock, 0 if not */
+  unsigned backordered: 1; /* 1 if backordered, 0 if not */
+  unsigned lead_time: 3;   /* order lead time in months */
+} inv[MAX_ITEM];
+
+listing 36
+struct b_type {
+  unsigned first: 1;
+  int : 6;
+  unsigned last: 1;
+};
+
+listing 37
+/* Simulation of a 100 minute spaceship
+   flight recorder.
+*/
+#include <stdlib.h>
+#include <stdio.h>
+
+/* all fields indicate OK if 1,
+   malfunctioning or low if 0 */
+struct telemetry {
+  unsigned fuel: 1;
+  unsigned radio: 1;
+  unsigned tv: 1;
+  unsigned water: 1;
+  unsigned food: 1;
+  unsigned waste: 1;
+} flt_recd;
+
+void display(struct telemetry i);
+
+int main(void)
+{
+  FILE *fp;
+  int i;
+
+  if((fp = fopen("flight", "wb"))==NULL) {
+    printf("Cannot open file.\n");
+    exit(1);
+  }
+
+  /* Imagine that each minute a status report of
+     the spaceship is recorded on disk.
+  */
+  for(i=0; i<100; i++) {
+    flt_recd.fuel = rand()%2;
+    flt_recd.radio = rand()%2;
+    flt_recd.tv = rand()%2;
+    flt_recd.water = rand()%2;
+    flt_recd.food = rand()%2;
+    flt_recd.waste = rand()%2;
+
+    display(flt_recd);
+    fwrite(&flt_recd, sizeof flt_recd, 1, fp);
+  }
+
+  fclose(fp);
+
+  return 0;
+}
+
+void display(struct telemetry i)
+{
+  if(i.fuel) printf("Fuel OK\n");
+  else printf("Fuel low\n");
+  if(i.radio) printf("Radio OK\n");
+  else printf("Radio failure\n");
+  if(i.tv) printf("TV system OK\n");
+  else printf("TV malfunction\n");
+  if(i.water) printf("Water supply OK\n");
+  else printf("Water supply low\n");
+  if(i.food) printf("Food supply OK\n");
+  else printf("Food supply low\n");
+  if(i.waste) printf("Waste containment OK\n");
+  else printf("Waste containment failure\n");
+  printf("\n");
+}
+
+listing 38
+struct telemetry {
+  char fuel;
+  char radio;
+  char tv;
+  char water;
+  char food;
+  char waste;
+} flt_recd;
+
+listing 39
+union u_type {
+  int i;
+  char c[2];
+  double d;
+} sample;
+
+listing 40
+sample.d = 123.098;
+
+listing 41
+p->i = 101;
+
+listing 42
+#include <stdio.h>
+
+int encode(int i);
+
+int main(void)
+{
+  int i;
+
+  i = encode(10); /* encode it */
+  printf("10 encoded is %d\n", i);
+  i = encode(i); /* decode it */
+  printf("i decoded is %d", i);
+
+  return 0;
+}
+
+/* Encode an integer, decode an encoded integer. */
+int encode(int i)
+{
+  union crypt_type {
+    int num;
+    char c[2];
+  } crypt;
+  unsigned char ch;
+
+  crypt.num = i;
+
+  /* swap bytes */
+  ch = crypt.c[0];
+  crypt.c[0] = crypt.c[1];
+  crypt.c[1] = ch;
+
+  /* return encoded integer */
+  return crypt.num;
+}
+
+listing 43
+/* This program displays the binary code for a
+   character entered at the keyboard.
+*/
+#include <stdio.h>
+#include <conio.h>
+
+struct sample {
+  unsigned a: 1;
+  unsigned b: 1;
+  unsigned c: 1;
+  unsigned d: 1;
+  unsigned e: 1;
+  unsigned f: 1;
+  unsigned g: 1;
+  unsigned h: 1;
+}; 
+
+union key_type {
+  char ch; 
+  struct sample bits;
+} key;
+
+int main(void)
+{
+  printf("Strike a key: ");
+
+  key.ch = getche();
+  printf("\nBinary code is: ");
+
+  if(key.bits.h) printf("1 ");
+  else printf("0 ");
+  if(key.bits.g) printf("1 ");
+  else printf("0 ");
+  if(key.bits.f) printf("1 ");
+  else printf("0 ");
+  if(key.bits.e) printf("1 ");
+  else printf("0 ");
+  if(key.bits.d) printf("1 ");
+  else printf("0 ");
+  if(key.bits.c) printf("1 ");
+  else printf("0 ");
+  if(key.bits.b) printf("1 ");
+  else printf("0 ");
+  if(key.bits.a) printf("1 ");
+  else printf("0 ");
+
+  return 0;
+}
+
+listing 44
+char ch;
+float d;
+int i;
+char str[80];
+double balance;
+
+listing 45
+struct s_type {
+  int a;
+  char b;
+  float bal;
+} myvar, *p;
+
+p = &myvar;
+
+p.a = 10;
+
+listing 46
+struct s_type {
+  int i;
+  char ch;
+  double d;
+} var1, var2;
+
+listing 47
+struct s_type {
+  int a;
+  int b: 2;
+  int c: 6;
+} var;
+.
+.
+.
+scanf("%d", &var);
+

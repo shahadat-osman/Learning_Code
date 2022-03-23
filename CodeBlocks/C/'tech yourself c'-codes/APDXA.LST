@@ -1,0 +1,1013 @@
+listing 1
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isalnum(ch)) printf("%c is alphanumeric\n", ch);
+  }
+
+  return 0;
+}
+
+listing 2
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isalpha(ch)) printf("%c is a letter\n", ch);
+  }
+
+  return 0;
+}
+
+listing 3
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(iscntrl(ch))
+      printf("%c is a control character\n", ch);
+  }
+
+  return 0;
+}
+
+listing 4
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isdigit(ch)) printf("%c is a digit\n", ch);
+  }
+
+  return 0;
+}
+
+listing 5
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isgraph(ch))
+      printf("%c is a printing character\n", ch);
+  }
+
+  return 0;
+}
+
+listing 6
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(islower(ch)) printf("%c is lowercase\n", ch);
+  }
+
+  return 0;
+}
+
+listing 7
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch=='Q') break;
+    if(isprint(ch)) printf("%c is printable\n", ch);
+  }
+
+  return 0;
+}
+
+listing 8
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(ispunct(ch)) printf("%c is punctuation\n", ch);
+  }
+
+  return 0;
+}
+
+listing 9
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(isspace(ch)) printf("%c is whitespace\n", ch);
+    if(ch==' ') break;
+  }
+
+  return 0;
+}
+
+listing 10
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch; 
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isupper(ch)) printf("%c is uppercase\n", ch);
+  }
+
+  return 0;
+}
+
+listing 11
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+
+  for(;;) {
+    ch = getchar();
+    if(ch==' ') break;
+    if(isxdigit(ch)) printf("%c is hexadecimal \n", ch);
+  }
+
+  return 0;
+}
+
+listing 12
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char s1[80], s2[80];
+
+  printf("Enter two strings: ");
+  gets(s1);
+  gets(s2);
+
+  strcat(s2, s1);
+  printf(s2);
+
+  return 0;
+}
+
+listing 13
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char *p;
+
+  p = strchr("this is a test", (int) ' ');
+  printf(p);
+
+  return 0;
+}
+
+listing 14
+#include <string.h>
+
+int password(void)
+{
+  char s[80];
+
+  printf("Enter password: ");
+  gets(s);
+
+  if(strcmp(s,"pass")) {
+    printf("Invalid Password\n");
+    return 0;
+  }
+  return 1;
+}
+
+listing 15
+char str[80];
+strcpy(str, "hello");
+
+listing 16
+strcpy(s, "hello");
+printf("%d", strlen(s));
+
+listing 17
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char *p;
+
+  p = strstr("this is a test", "is");
+  printf(p);
+
+  return 0;
+}
+
+listing 18
+#include <string.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char *p;
+
+  p = strtok("The summer soldier, the sunshine patriot", " ,");
+
+  printf(p);
+  do {
+   p = strtok('\0', ", ");
+   if(p) printf("|%s", p);
+  } while(p);
+
+  return 0;
+}
+
+listing 19
+putchar(tolower('Q'));
+
+listing 20
+putchar(toupper('a'));
+
+listing 21
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val = -1.0;
+
+  do {
+    printf("arc cosine of %f is %f\n", val, acos(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 22
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("arc sine of %f is %f\n", val, asin(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 23
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("arc tangent of %f is %f\n", val, atan(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 24
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double y=-1.0;
+
+  do {
+    printf("atan2 of %f is %f\n", y, atan2(y, 1.0));
+    y += 0.1;
+  } while(y<=1.0);
+
+  return 0;
+}
+
+listing 25
+printf("%f", ceil(9.9));
+
+listing 26
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("cosine of %f is %f\n", val, cos(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 27
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("hyperbolic cosine of %f is %f\n", val, cosh(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 28
+printf("Value of e to the first: %f", exp(1.0));
+
+listing 29
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%1.1f %1.1f", fabs(1.0), fabs(-1.0));
+
+  return 0;
+}
+
+listing 30
+printf("%f", floor(10.9));
+
+listing 31
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=1.0;
+
+  do {
+    printf("%f %f\n", val, log(val));
+    val++;
+  } while(val<11.0);
+
+  return 0;
+}
+
+listing 32
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=1.0;
+
+  do {
+    printf("%f %f\n", val, log10(val));
+    val++;
+  } while(val<11.0);
+
+  return 0;
+}
+
+listing 33
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double x=10.0, y=0.0;
+
+  do {
+    printf("%f ", pow(x, y));
+    y++;
+  } while(y<11);
+
+  return 0;
+}
+
+listing 34
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("sine of %f is %f\n", val, sin(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 35
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("hyperbolic sine of %f is %f\n", val, sinh(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 36
+printf("%f", sqrt(16.0));
+
+listing 37
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("tangent of %f is %f\n", val, tan(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 38
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+  double val=-1.0;
+
+  do {
+    printf("tanh of %f is %f\n", val, tanh(val));
+    val += 0.1;
+  } while(val<=1.0);
+
+  return 0;
+}
+
+listing 39
+struct tm {
+  int tm_sec;   /* seconds, 0-61 */
+  int tm_min;   /* minutes, 0-59 */
+  int tm_hour;  /* hours, 0-23 */
+  int tm_mday;  /* day of the month, 1-31*/
+  int tm_mon;   /* months since Jan, 0-11 */
+  int tm_year;  /* years from 1900 */
+  int tm_wday;  /* days since Sunday, 0-6 */
+  int tm_yday;  /* days since Jan 1, 0-365 *;
+  int tm_isdst; /* Daylight Saving Time indicator */
+};
+
+listing 40
+#include <time.h>
+#include <stdio.h>
+
+int main(void)
+{
+  struct tm *ptr;
+  time_t lt;
+
+  lt = time(NULL);
+  ptr = localtime(&lt);
+  printf(asctime(ptr));
+
+  return 0;
+}
+
+listing 41
+#include <stdio.h>
+#include <time.h>
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<10000; i++);
+
+  printf("%u", clock());
+
+  return 0;
+}
+
+listing 42
+asctime(localtime(time))
+
+listing 43
+#include <time.h>
+#include <stdio.h>
+
+int main(void)
+{
+  time_t lt;
+
+  lt = time(NULL);
+  printf(ctime(&lt));
+
+  return 0;
+}
+
+listing 44
+#include <time.h>
+#include <stdio.h>
+
+int main(void)
+{
+  time_t start, end;
+  long unsigned int t;
+
+  start = time(NULL);
+  for(t=0; t<500000L; t++);
+  end = time(NULL);
+  printf("Loop required %f seconds.\n", difftime(end, start));
+
+  return 0;
+}
+
+listing 45
+#include <time.h>
+#include <stdio.h>
+
+/* print local and Coordinated Universal time */
+int main(void)
+{
+  struct tm *local, *coordinated;
+  time_t t;
+
+  t = time(NULL);
+  local = localtime(&t);
+  printf("Local time and date: %s", asctime(local));
+  coordinated = gmtime(&t);
+  printf("Coordinated Universal time and date: %s",
+         asctime(coordinated));
+
+  return 0;
+}
+
+listing 46
+#include <time.h>
+#include <stdio.h>
+
+/* print local and Coordinated Universal time */
+int main(void)
+{
+  struct tm *local;
+  time_t t;
+
+  t = time(NULL);
+  local = localtime(&t);
+  printf("Local time and date: %s", asctime(local));
+  local = gmtime(&t);
+  printf("Coordinated Universal time and date: %s", asctime(local));
+
+  return 0;
+}
+
+listing 47
+#include <time.h>
+#include <stdio.h>
+
+int main(void)
+{
+  struct tm *ptr;
+  time_t lt;
+
+  lt = time(NULL);
+  ptr = localtime(&lt);
+  printf(asctime(ptr));
+
+  return 0;
+}
+
+listing 48
+#include <stdlib.h>
+#include <stdio.h>
+
+float *get_mem(void)
+{
+  float *p;
+
+  p = calloc(100, sizeof(float));
+  if(!p) {
+    printf("Allocation error - aborting.\n");
+    exit(1);
+  }
+  return p;
+}
+
+listing 49
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char *str[100];
+  int i;
+
+  for(i=0; i<100; i++) {
+    if((str[i] = malloc(128))==NULL) {
+      printf("Allocation error - aborting.\n");
+      exit(0);
+    }
+    gets(str[i]);
+  }
+
+  /* now free the memory */
+  for(i=0; i<100; i++) free(str[i]);
+
+  return 0;
+}
+
+listing 50
+#include <stdlib.h>
+#include <stdio.h>
+
+struct addr {
+  char name[40];
+  char street[40];
+  char city[40]; 
+  char state[3];
+  char zip[10];
+};
+.
+.
+.
+struct addr *get_struct(void)
+{
+  struct addr *p;
+
+  if((p = malloc(sizeof(struct addr)))==NULL)
+  {
+    printf("Allocation error - aborting.\n");
+    exit(0);
+  }
+  return p;
+}
+
+listing 51
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char *p;
+
+  p = malloc(17);
+  if(!p) {
+    printf("Allocation error - aborting.\n");
+    exit(1);
+  }
+
+  strcpy(p, "this is 16 chars");
+
+  p = realloc(p,18);
+  if(!p) {
+    printf("Allocation error - aborting.\n");
+    exit(1);
+  }
+
+  strcat(p, ".");
+
+  printf(p);
+
+  free(p);
+
+  return 0;
+}
+
+listing 52
+#include <stdlib.h>
+#include <conio.h>
+
+int main(void)
+{
+  for(;;)
+    if(getche()=='A') abort();
+
+  return 0;
+}
+
+listing 53
+#include <stdlib.h>
+#include <stdio.h>
+
+int get_abs(void)
+{
+  char num[80];
+
+  gets(num);
+
+  return abs(atoi(num));
+}
+
+listing 54
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char num1[80], num2[80];
+
+  printf("Enter first: ");
+  gets(num1);
+  printf("Enter second: ");
+  gets(num2);
+  printf("The sum is: %f", atof(num1) + atof(num2));
+
+  return 0;
+}
+
+listing 55
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char num1[80], num2[80];
+
+  printf("Enter first: ");
+  gets(num1);
+  printf("Enter second: ");
+  gets(num2);
+  printf("The sum is: %d", atoi(num1) + atoi(num2));
+
+  return 0;
+}
+
+listing 56
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char num1[80], num2[80];
+
+  printf("Enter first: ");
+  gets(num1);
+  printf("Enter second: ");
+  gets(num2);
+  printf("The sum is: %1d", atol(num1) + atol(num2));
+
+  return 0;
+}
+
+listing 57
+#include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
+ 
+char *alpha = "abcdefghijklmnopqrstuvwxyz";
+
+int comp(const void *ch, const void *s);
+
+int main(void)
+{
+  char ch;
+  char *p;
+
+  do {
+    printf("Enter a character: ");
+    scanf("%c%*c",&ch);
+    ch = tolower(ch);
+    p = bsearch(&ch, alpha, 26, 1, comp);
+    if(p) printf("is in alphabet.\n");
+    else printf("is not in alphabet.\n");
+  } while(p);
+
+  return 0;
+}
+
+/* compare two characters */
+int comp(const void *ch, const void *s)
+{
+  return *(char *)ch - *(char *)s;
+}
+
+listing 58
+char menu(void)
+{
+  char ch;
+
+  do {
+    printf("Enter names (E)\n");
+    printf("Delete name (D)\n");
+    printf("Print (P)\n");
+    printf("Quit (Q)\n");
+  } while(!strchr("EDPQ",toupper(ch)));
+  if(ch=='Q') exit(0);
+  return ch;
+}
+
+listing 59
+#include <stdlib.h>
+#include <stdio.h>
+
+long int get_labs(void)
+{
+  char num[80];
+
+  gets(num);
+
+  return labs(atol(num));
+}
+
+listing 60
+#include <setjmp.h>
+#include <stdio.h>
+
+void f2(void);
+
+jmp_buf ebuf;
+
+int main(void)
+{
+  char first=1;
+  int i;
+
+  printf("1 ");
+  i = setjmp(ebuf);
+  if(first) {
+    first = !first;
+    f2();
+    printf("this will not be printed");
+  }
+  printf("%d", i);
+
+  return 0;
+}
+
+void f2(void)
+{
+  printf("2 ");
+  longjmp(ebuf, 3);
+}
+
+listing 61
+#include <stdlib.h>
+#include <stdio.h>
+
+int comp(const void *i, const void *j);
+
+int num[10]= {
+  1,3, 6, 5, 8, 7, 9, 6, 2, 0
+};
+
+int main(void)
+{
+  int i;
+
+  printf("Original array: ");
+  for(i=0; i<10; i++) printf("%d ", num[i]);
+  printf("\n");
+
+  qsort(num, 10, sizeof(int), comp);
+
+  printf("Sorted array: ");
+  for(i=0; i<10; i++) printf("%d ", num[i]);
+
+  return 0;
+}
+
+/* compare the integers */
+int comp(const void *i, const void *j)
+{
+  return *(int *)i - *(int *)j;
+}
+
+listing 62
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<10; i++)
+    printf("%d ", rand());
+
+  return 0;
+}
+
+listing 63
+#include <setjmp.h>
+#include <stdio.h>
+
+void f2(void);
+
+jmp_buf ebuf;
+
+int main(void)
+{
+  char first=1;
+  int i;
+
+  printf("1 ");
+  i = setjmp(ebuf);
+  if(first) {
+    first = !first;
+    f2( );
+    printf("this will not be printed");
+  }
+  printf("%d",i);
+
+  return 0;
+}
+
+void f2(void)
+{
+  printf("2 ");
+  longjmp(ebuf, 3);
+}
+
+listing 64
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/* Seed rand with the system time
+   and display the first 100 numbers.
+*/
+int main(void)
+{
+  int i, utime;
+  long ltime;
+
+  /* get the current calendar time */
+  ltime = time(NULL);
+  utime = (unsigned int) ltime/2;
+  srand(utime);
+
+  for(i=0; i<10; i++) printf("%d ", rand());
+
+  return 0;
+}
+

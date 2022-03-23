@@ -1,0 +1,26 @@
+// limitation of int data type
+#include <stdio.h>
+int main()
+{
+     int a;
+
+    a=1000;
+    printf("Value of a is %d\n", a);
+
+    a=-21000;
+    printf("Value of a is %d\n", a);
+
+    a=10000000;
+    printf("Value of a is %d\n", a);
+
+    a=-10000000;
+    printf("Value of a is %d\n", a);
+
+    a=100020004000503;                  //overlimit
+    printf("Value of a is %d\n", a);
+
+    a=-4325987632;                      //overlimit 
+    printf("Value of a is %d\n", a);
+
+    return 0;
+}

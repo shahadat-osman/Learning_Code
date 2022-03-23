@@ -1,0 +1,674 @@
+listing 1
+#include <stdio.h>
+
+
+
+listing 2
+#include <stdio.h>
+
+int main(void)
+{
+  printf("This is a short C program.");
+
+  return 0;
+}
+
+
+
+
+listing 3
+#include <stdio.h>
+
+
+
+
+
+listing 4
+int main(void)
+
+
+
+
+listing 5
+printf("This is a short C program.");
+
+
+
+
+listing 6
+return 0;
+
+
+
+
+listing 7
+#include <stdio.h>
+
+int main(void)
+{
+  printf("This is ");
+  printf("another C ");
+  printf("program.");
+
+  return 0;
+}
+
+
+
+
+listing 8
+int counter;
+
+
+
+
+listing 9
+float x, y, z;
+
+
+
+
+listing 10
+num = 100;
+
+
+
+
+listing 11
+printf("This prints the number %d", 99);
+
+
+
+
+
+listing 12
+printf("This displays %d, too", 99);
+
+
+
+
+listing 13
+#include <stdio.h>
+
+int main(void)
+{
+  int num;
+
+  num = 100;
+  printf("The value is %d", num);
+
+  return 0;
+}
+
+
+
+
+
+listing 14
+int num;
+
+
+
+
+
+
+listing 15
+printf("The value is %d", num);
+
+
+
+
+
+
+listing 16
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+  float f;
+  double d;
+
+  ch = 'X';
+  f = 100.123;
+  d = 123.009;
+
+  printf("ch is %c, ", ch);
+  printf("f is %f, ", f);
+  printf("d is %f", d);
+
+  return 0;
+}
+
+
+
+
+
+listing 17
+int num;
+scanf("%d", &num);
+
+
+
+
+
+listing 18
+#include <stdio.h>
+
+int main(void)
+{
+  int num;
+  float f;
+
+  printf("Enter an integer: ");
+  scanf("%d", &num);
+
+  printf("Enter a floating point number: ");
+  scanf("%f", &f);
+
+  printf("%d ", num);
+  printf("%f", f);
+
+  return 0;
+}
+
+
+
+
+
+listing 19
+int answer;
+answer = 100 * 31;
+
+
+
+
+
+listing 20
+answer = count - 100;
+
+
+
+
+
+listing 21
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%d", 5/2);
+  printf(" %d", 5%2);
+  printf(" %d", 4/2);
+  printf(" %d", 4%2);
+
+  return 0;
+}
+
+
+
+
+
+listing 22
+count *num+88/val-19%count
+
+
+
+
+
+listing 23
+(count * num) + (88 / val) - (19 % count)
+
+
+
+
+
+listing 24
+#include <stdio.h>
+
+int main(void)
+{
+  int len, width;
+
+  printf("Enter length: ");
+  scanf("%d", &len);
+  printf("Enter width: ");
+  scanf("%d", &width);
+
+  printf("Area is %d", len * width);
+
+  return 0;
+}
+
+
+
+
+
+listing 25
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+
+  i = 10;
+  i = -i;
+  printf("This is i: %d", i);
+
+  return 0;
+}
+
+
+
+
+
+listing 26
+/* This is a comment. */
+
+
+
+
+
+listing 27
+/*
+  This is a longer comment
+  that extends over
+  five lines.
+*/
+
+
+
+
+
+listing 28
+/* this is a comment /* this is another comment
+  nested inside the first -- which will cause
+  a syntax error */ with a nested comment
+*/
+
+
+
+
+
+listing 29
+/* This program converts earth days into Jovian years. */
+#include <stdio.h>
+
+int main(void)
+{
+  float e_days; /* number of earth days */
+  float j_years; /* equivalent number of Jovian years */
+
+  /* get number of earth days */
+  printf("Enter number of earth days: ");
+  scanf("%f", &e_days);
+
+  /* now, compute Jovian years */
+  j_years = e_days / (365.0 * 12.0);
+
+  /* display the answer */
+  printf("Equivalent Jovian years: %f", j_years);
+
+  return 0;
+}
+
+
+
+
+
+listing 30
+pri/* wrong */ntf("this won't work");
+
+
+
+
+
+listing 31
+/**/
+
+
+
+
+
+listing 32
+/* printf("this is a test"); */
+
+
+
+
+
+listing 33
+void myfunc(void)
+{
+  printf("This is a test.");
+}
+
+
+
+
+
+listing 34
+void myfunc(void);
+
+
+
+
+
+listing 35
+void FuncName(void) {
+  /* body of function here */
+}
+
+
+
+
+
+listing 36
+/* A program with two functions */
+
+#include <stdio.h>
+
+void func1(void); /* prototype for func1() */
+
+int main(void)
+{
+  printf("I ");
+  func1();
+  printf("C.");
+
+  return 0;
+}
+
+void func1(void)
+{
+  printf("like ");
+}
+
+
+
+
+
+listing 37
+/* This program has three functions. */
+
+#include <stdio.h>
+
+void func1(void); /* prototypes */
+void func2(void);
+
+int main(void)
+{
+  func2( );
+  printf("3");
+
+  return 0;
+}
+
+void func2(void)
+{
+  func1();
+  printf("2 ");
+}
+
+void func1(void)
+{
+  printf("1 ");
+}
+
+
+
+
+
+listing 38
+#include <stdio.h>
+#include <math.h> /* needed by sqrt() */
+
+int main(void)
+{
+  double answer;
+
+  answer = sqrt(10.0);
+  printf("%f", answer);
+
+  return 0;
+}
+
+
+
+
+
+listing 39
+#include <stdio.h>
+#include <math.h> /* needed by sqrt() */
+
+int main(void)
+{
+  printf("%f", sqrt(10.0));
+
+  return 0;
+}
+
+
+
+
+
+listing 40
+#include <stdio.h>
+
+int func(void); /* prototype */
+
+int main(void)
+{
+  int num;
+
+  num = func( );
+  printf("%d", num);
+
+  return 0;
+}
+
+int func(void)
+{
+  return 10;
+}
+
+
+
+
+
+listing 41
+func(void)
+{
+  return 10;
+}
+
+
+
+
+
+listing 42
+return ;
+
+
+
+
+
+listing 43
+#include <stdio.h>
+
+int get_sqr(void);
+
+int main(void)
+{
+  int sqr;
+
+  sqr = get_sqr( );
+  printf("Square: %d", sqr);
+
+  return 0;
+}
+
+int get_sqr(void)
+{
+  int num;
+
+  printf("Enter a number: ");
+  scanf("%d", &num);
+  return num*num; /* square the number */
+}
+
+
+
+
+
+listing 44
+#include <stdio.h>
+
+void func1(void);
+
+int main(void)
+{
+  func1();
+
+  return 0;
+}
+
+void func1(void)
+{
+  printf("This is printed.");
+  return; /* return with no value */
+  printf("This is never printed.");
+}
+
+
+
+
+
+listing 45
+#include <stdio.h>
+
+int f1(void);
+
+int main(void)
+{
+  double answer;
+
+  answer = f1();
+  printf("%f", answer);
+
+  return 0;
+}
+
+int f1(void)
+{
+  return 100;
+}
+
+
+
+
+
+listing 46
+void func(void)
+{
+  int i;
+
+  printf("Enter a number: ");
+  scanf("%d", &i);
+
+  return i;
+}
+
+
+
+
+
+listing 47
+void sum(int x, int y)
+{
+  printf("%d ", x + y);
+}
+
+
+
+
+
+listing 48
+/* A simple program that demonstrates sum(). */
+
+#include <stdio.h>
+
+void sum(int x, int y);
+
+int main(void)
+{
+  sum(1, 20);
+  sum(9, 6);
+  sum(81, 9);
+
+  return 0;
+}
+
+void sum(int x, int y)
+{
+  printf("%d ", x + y);
+}
+
+
+
+
+
+listing 49
+sum(10-2, 9*7);
+
+
+
+
+
+listing 50
+#include <stdio.h>
+
+void outchar(char ch);
+
+int main(void)
+{
+  outchar('A');
+  outchar('B');
+  outchar('C');
+
+  return 0;
+}
+
+void outchar(char ch)
+{
+  printf("%c", ch);
+}
+
+
+
+
+
+listing 51
+#include <stdio.h>
+
+void sqr_it(int num);
+
+int main(void)
+{
+  sqr_it(10.0);
+
+  return 0;
+}
+
+void sqr_it(int num)
+{
+  printf("%d", num * num);
+}
+
+
+
+
+
+listing 52
+/* this inputs a number
+scanf("%d", &num);
+

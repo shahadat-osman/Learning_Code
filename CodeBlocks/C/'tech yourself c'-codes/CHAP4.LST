@@ -1,0 +1,513 @@
+listing 1
+if(ch=='L') load();
+else if(ch=='S') save();
+else if(ch=='E') enter();
+else if(ch=='D') display();
+else if(ch=='Q') quit();
+
+listing 2
+long int i;
+
+listing 3
+unsigned count;
+unsigned int num;
+
+listing 4
+#include <stdio.h>
+
+int main(void)
+{
+  unsigned u;
+  long l;
+  short s; 
+
+  printf("Enter an unsigned: ");
+  scanf("%u", &u); 
+  printf("Enter a long: ");
+  scanf("%ld", &l);
+  printf("Enter a short: ");
+  scanf("%hd", &s);
+
+  printf("%u %ld %hd\n", u, l, s);
+
+  return 0;
+}
+
+listing 5
+#include <stdio.h>
+
+int main(void)
+{
+  short int i;  /* a signed short integer */
+  unsigned short int u; /* an unsigned short integer */
+
+  u = 33000;
+  i = u;
+  printf("%hd %hu", i, u);
+
+  return 0;
+}
+
+listing 6
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+  char j;
+
+  i = 0;
+  for(j=1; j<101; j++) i = j + i;
+
+  printf("Total is: %d", i);
+
+  return 0;
+}
+
+listing 7
+short int i;
+
+listing 8
+#include <stdio.h>
+
+void f1(void), f2(void);
+
+int main(void)
+{
+  f1();
+
+  return 0;
+}
+
+void f1(void)
+{
+  int count;
+
+  for(count=0; count<10; count++) f2();
+}
+
+void f2(void)
+{
+  int count;
+
+  for(count=0; count<10; count++) printf("%d ", count);
+}
+
+listing 9
+#include <stdio.h>
+
+int main(void)
+{
+  printf("This program won't compile.");
+  int i; /* this should come first */
+  i = 10;
+  printf("%d", i);
+
+  return 0;
+}
+
+listing 10
+#include <stdio.h>
+
+void f1(void);
+
+int max; /* this is a global variable */
+
+int main(void)
+{
+  max = 10;
+  f1();
+
+  return 0;
+}
+
+void f1(void)
+{
+  int i;
+
+  for(i=0; i<max; i++) printf("%d ", i);
+}
+
+listing 11
+#include <stdio.h>
+
+void f1(void);
+
+int count; /* global count */
+
+int main(void)
+{
+  count = 10;
+  f1();
+  printf("count in main(): %d\n", count);
+
+  return 0;
+}
+
+void f1(void)
+{
+  int count; /* local count */
+
+  count = 100;
+  printf("count in f1() : %d\n", count);
+}
+
+listing 12
+#include <stdio.h>
+
+int power(void);
+
+int m, e;
+
+int main(void)
+{
+  m = 2;
+  e = 3;
+
+  printf("%d raised to the %d power is %d", m, e, power());
+
+  return 0;
+}
+
+/* Non-general version of power. */
+int power(void)
+{
+  int temp, temp2;
+
+  temp = 1;
+  temp2 = e;
+  for( ; temp2> 0; temp2--) temp = temp * m;
+
+  return temp;
+}
+
+listing 13
+#include <stdio.h>
+
+int power(int m, int e);
+
+int main(void)
+{
+  int m, e;
+  m = 2;
+  e = 3;
+
+  printf("%d to the %d is %d\n", m, e, power(m, e));
+  printf("4 to the 5th is %d\n", power(4, 5));
+  printf("3 to the 3rd is %d\n", power(3, 3));
+
+  return 0;
+}
+
+/* Parameterized version of power. */
+int power(int m, int e)
+{
+  int temp;
+
+  temp = 1;
+  for( ; e> 0; e--) temp = temp * m;
+
+  return temp;
+}
+
+listing 14
+#include <stdio.h>
+
+int series(void);
+
+int main(void)
+{
+  int i;
+
+  for(i=0; i<10; i++) printf("%d ", series());
+
+  return 0;
+}
+
+/* This is incorrect. */
+int series(void)
+{
+  int total;
+
+  total = (total + 1423) % 1422;
+  return total;
+}
+
+listing 15
+ch = 'Z';
+
+listing 16
+char ch;
+
+ch = 'A';
+ch = 65;
+
+listing 17
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%s %s %s", "Once", "upon", "a time");
+
+  return 0;
+}
+
+listing 18
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%hd", 42340); /* this won't work right */
+
+  return 0;
+}
+
+listing 19
+#include <stdio.h>
+
+int main(void)
+{
+  printf("%f", 2309);
+
+  return 0;
+}
+
+listing 20
+int count = 100;
+
+listing 21
+#include <stdio.h>
+
+int main(void)
+{
+  int i = -1;
+
+  printf("i is initialized to %d", i);
+
+  return 0;
+}
+
+listing 22
+int min=0, count, max=100;
+
+listing 23
+#include <stdio.h>
+
+void f(void);
+
+int main(void)
+{
+  f();
+  f();
+  f();
+
+  return 0;
+}
+
+void f(void)
+{
+  int i = 10;
+
+  printf("%d ", i);
+}
+
+listing 24
+#include <stdio.h>
+
+int x = 10; /* intialize global variable */
+
+int myfunc(int i);
+
+int main(void)
+{
+  /* initialize a local variable using a
+     a global variable */
+  int y = x; 
+
+  /* initialize a local variable using another
+     local variable and a function call */
+  int z = myfunc(y);
+
+  printf("%d %d", y, z);
+
+  return 0;
+}
+
+int myfunc(int i)
+{
+  return i/2;
+}
+
+listing 25
+int a=1, b=2, c=a;
+
+listing 26
+char ch;
+int i;
+float f;
+double outcome;
+
+ch = '0';
+i = 10;
+f = 10.2;
+
+outcome = ch * i / f;
+
+listing 27
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+  float f;
+
+  i = 10; 
+  f = 23.25;
+
+  printf("%f", i*f);
+
+  return 0;
+}
+
+listing 28
+#include <stdio.h>
+
+int main(void)
+{
+  short int i;
+
+  i = -10;
+  printf("%d", i);
+
+  return 0;
+}
+
+listing 29
+char ch;
+short i;
+unsigned long u1;
+float f;
+
+listing 30
+f/ch - (i*ul)
+
+listing 31
+#include <stdio.h>
+
+int main(void)
+{
+  char ch;
+  int i;
+
+  i = 1000;
+  ch = i;
+
+  printf("%d", ch);
+
+  return 0;
+}
+
+listing 32
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+  float f;
+
+  f = 1234.0098;
+  i = f; /* convert to int */
+  printf("%f %d", f, i);
+
+  return 0;
+}
+
+listing 33
+#include <stdio.h>
+
+int main(void)
+{
+  short int si;
+  long int li;
+
+  li = 100000;
+  si = li; /* convert to short int */
+
+  printf("%hd", si);
+
+  return 0;
+}
+
+listing 34
+#include <stdio.h>
+
+int main(void)
+{
+  int i;
+  long double ld;
+
+  ld = 10.0;
+  i = ld;
+
+  printf("%d", i);
+}
+
+listing 35
+#include <stdio.h>
+
+int main(void)
+{
+  float f;
+
+  f = 10 / 3;
+  printf("%f", f);
+
+  return 0;
+}
+
+listing 36
+float f;
+
+f = 100.2;
+
+/* print f as an integer */
+printf("%d", (int) f);
+
+listing 37
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+  double i;
+
+  for(i=1.0; i<101.0; i++) {
+    printf("The square root of %lf is %lf\n", i, sqrt(i));
+    printf("Whole number part: %d ", (int)sqrt(i));
+    printf("Fractional part: %lf\n", sqrt(i)-(int)sqrt(i));
+    printf("\n");
+  }
+
+  return 0;
+}
+
+listing 38
+int num;
+
+(float) num = 123.23; /* this is incorrect */
+
+listing 39
+x = 123.23 % 3; /* fix this statement */
+
+listing 40
+switch(x) {
+  case 'A' : printf("is an A");
+    break;
+  case 65 : printf("is the number 65");
+    break;
+}
+
+listing 41
+int i
+for(i=0; i<33000; i++);
+

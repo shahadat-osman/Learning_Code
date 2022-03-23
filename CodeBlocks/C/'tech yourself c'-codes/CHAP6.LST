@@ -1,0 +1,606 @@
+listing 1
+char name[10] = "Thomas Jefferson";
+
+listing 2
+int *p;
+
+listing 3
+#include <stdio.h>
+
+int main(void)
+{
+  int *p, q;
+
+  q = 199; /* assign q 199 */
+
+  p = &q; /* assign p the address of q */
+
+  printf("%d", *p); /* display q's value using pointer */
+
+  return 0;
+}
+
+listing 4
+int *p, q;
+
+listing 5
+#include <stdio.h>
+
+int main(void)
+{
+  int *p, q;
+
+  p = &q; /* get q's address */
+
+  *p = 199; /* assign q a value using a pointer */
+
+  printf("q's value is %d", q);
+
+  return 0;
+}
+
+listing 6
+int q;
+double *fp;
+
+fp = &q;
+
+/* what does this line do? */
+*fp = 100.23;
+
+listing 7
+int main(void)
+{
+  int *p;
+
+  *p = 10;  /* incorrect - p is not pointing to
+               anything */
+
+listing 8
+int *p, q;
+
+listing 9
+p = &q;
+
+listing 10
+*p = 1000;
+
+listing 11
+/* This program is wrong, but harmless. */
+
+#include <stdio.h>
+
+int main(void)
+{
+  int *p;
+  double q, temp;
+
+  temp = 1234.34;
+
+  p = &temp; /* attempt to assign q a value using */
+  q = *p;    /* indirection through an integer pointer */
+
+  printf("%f", q); /* this will not print 1234.34 */
+
+  return 0;
+}
+
+listing 12
+q = *p;
+
+listing 13
+p++;
+
+listing 14
+int *p
+.
+.
+.
+p = p + 200;
+
+listing 15
+*p++;
+
+listing 16
+ (*p)++;
+
+listing 17
+#include <stdio.h>
+
+int main(void)
+{
+  char *cp, ch;
+  int  *ip, i;
+  float  *fp, f;
+  double *dp, d;
+
+  cp = &ch;
+  ip = &i;
+  fp = &f;
+  dp = &d;
+
+  /* print the current values */
+  printf("%p %p %p %p\n", cp, ip, fp, dp);
+
+  /* now increment them by one */
+  cp++;
+  ip++;
+  fp++;
+  dp++;
+
+  /* print their new values */
+  printf("%p %p %p %p\n", cp, ip, fp, dp);
+
+  return 0;
+}
+
+listing 18
+#include <stdio.h>
+
+int main(void)
+{
+  int *p, q;
+
+  p = &q;
+
+  q = 1;
+  printf("%p ", p);
+
+  *p++; /* this will not increment q */
+  printf("%d %p", q, p);
+
+  return 0;
+}
+
+listing 19
+#include <stdio.h>
+
+int main(void)
+{
+  int *p, q;
+
+  p = &q;
+
+  q = 1;
+  printf("%p ", p);
+
+  (*p)++; /* now q is incremented and p is unchanged */
+  printf("%d %p", q, p);
+
+  return 0;
+}
+
+listing 20
+int *p, i;
+
+p = &i;
+
+p = p * 8;
+
+listing 21
+p = p + 2;
+
+listing 22
+#include <stdio.h>
+
+int main(void)
+{
+  int a[10] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+  int *p;
+
+  p = a; /* assign p the address of start of a */
+
+  /* this prints a's first, second and third elements */
+  printf("%d %d %d\n", *p, *(p+1), *(p+2));
+
+  /* this does the same thing using a */
+  printf("%d %d %d", a[0], a[1], a[2]);
+
+  return 0;
+}
+
+listing 23
+float balance[10][5];
+
+listing 24
+float *p;
+
+p = (float *) balance;
+*(p + (3*5) + 1)
+
+listing 25
+#include <stdio.h>
+
+int main(void)
+{
+  char str[] = "Pointers are fun";
+  char *p;
+  int i;
+
+  p = str;
+
+  /* loop until null is found */
+  for(i=0; p[i]; i++)
+    printf("%c", p[i]);
+
+  return 0;
+}
+
+listing 26
+char *p, ch;
+int i;
+
+p = &ch;
+for(i=0; i<10; i++) p[i] = 'A'+i;  /* wrong */
+
+listing 27
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+
+  *(str+3) = 'c';
+  printf("%c", *(str+3));
+
+  return 0;
+}
+
+listing 28
+str++;
+
+listing 29
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+
+  char str[80];
+  int i;
+
+  printf("Enter a string: ");
+  gets(str);
+
+  for(i=0; str[i]; i++)
+    str[i] = toupper(str[i]);
+
+  printf("%s\n", str); /* uppercase string */
+
+  for(i=0; str[i]; i++)
+    str[i] = tolower(str[i]);
+
+  printf("%s\n", str); /* lowercase string */
+
+  return 0;
+}
+
+listing 30
+#include <ctype.h>
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80], *p;
+
+  printf("Enter a string: ");
+  gets(str);
+  p = str;
+
+  while(*p) {
+    *p = toupper(*p);
+    p++;
+  }
+
+  printf("%s\n", str); /* uppercase string */
+
+  p = str; /* reset p */
+
+  while(*p) {
+    *p = tolower(*p);
+    p++;
+  }
+
+  printf("%s\n", str); /* lowercase string */
+
+  return 0;
+}
+
+listing 31
+while(*p) {
+  *p = toupper(*p);
+  p++;
+}
+
+listing 32
+while(*p)
+  *p++ = toupper(*p);
+
+listing 33
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char str1[] = "Pointers are fun to use";
+  char str2[80], *p1, *p2;
+
+  /* make p point to end of str1 */
+  p1 = str1 + strlen(str1) - 1;
+
+  p2 = str2;
+
+  while(p1 >= str1)
+    *p2++ = *p1--;
+
+  /* null terminate str2 */
+  *p2 = '\0';
+
+  printf("%s %s", str1, str2);
+
+  return 0;
+}
+
+listing 34
+while(p1 >= str1) {
+  *p2 = *p1;
+  p1--;
+  p2++;
+}
+
+listing 35
+int count[10];
+.
+.
+.
+count = count + 2;
+
+listing 36
+int temp[5] = {10, 19, 23, 8, 9};
+int *p;
+
+p = temp;
+
+printf("%d", *(p+3));
+
+listing 37
+#include <stdio.h>
+
+int main(void)
+{
+  char *p;
+
+  p = "one two three";
+
+  printf(p);
+
+  return 0;
+}
+
+listing 38
+p = "one two three";
+
+listing 39
+#include <stdio.h>
+
+int main(void)
+{
+  char *p = "one two three";
+
+  printf(p);
+
+  return 0;
+}
+
+listing 40
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char *p = "stop";
+  char str[80];
+
+  do {
+   printf("Enter a string: ");
+   gets(str);
+  } while(strcmp(p, str));
+
+  return 0;
+}
+
+listing 41
+char *InsDisk = "Insert disk into drive A, then press ENTER";
+.
+.
+.
+printf(InsDisk);
+.
+.
+.
+printf(InsDisk);
+
+listing 42
+int *pa[20];
+
+listing 43
+pa[8] = &myvar;
+
+listing 44
+*pa[2] = 100;
+
+listing 45
+char *p[] = {
+  "Input exceeds field width",
+  "Out of range",
+  "Printer not turned on",
+  "Paper out",
+  "Disk full",
+  "Disk write error"
+};
+
+void error(int err_num)
+{
+  printf(p[err_num]);
+}
+
+listing 46
+#include <stdio.h>
+#include <string.h>
+
+char *p[][2] = {
+  "Red Delicious", "red",
+  "Golden Delicious", "yellow",
+  "Winesap", "red",
+  "Gala", "reddish orange",
+  "Lodi", "green",
+  "Mutsu", "yellow",
+  "Cortland", "red",
+  "Jonathan", "red",
+  "", "" /* terminate the table with null strings */
+};
+
+int main(void)
+{
+  int i;
+  char apple[80];
+
+  printf("Enter name of apple: ");
+  gets(apple);
+
+  for(i=0; *p[i][0]; i++) {
+    if(!strcmp(apple, p[i][0]))
+      printf("%s is %s\n", apple, p[i][1]);
+  }
+
+  return 0;
+}
+
+listing 47
+char **mp;
+
+listing 48
+char **mp, *p, ch;
+
+p = &ch; /* get address of ch */
+mp = &p; /* get address of p */
+**mp = 'A'; /* assign ch the value A using multiple
+               indirection*/
+
+listing 49
+#include <stdio.h>
+
+int main(void)
+{
+  float *fp, **mfp, val;
+
+  fp = &val;
+  mfp = &fp;
+
+  **mfp = 123.903;
+  printf("%f %f", val, **mfp);
+
+  return 0;
+}
+
+listing 50
+#include <stdio.h>
+
+int main(void)
+{
+  char *p, **mp, str[80];
+
+  p = str;
+  mp = &p;
+
+  printf("Enter your name: ");
+  gets(*mp);
+  printf("Hi %s", *mp);
+
+  return 0;
+}
+
+listing 51
+#include <stdio.h>
+
+void myputs(char *p);
+
+int main(void)
+{
+  myputs("this is a test");
+
+  return 0;
+}
+
+void myputs(char *p)
+{
+  while(*p) { /* loop as long as p does not point to the
+                 null that terminates the string */
+    printf("%c", *p);
+    p++;       /* go to next character */
+  }
+  printf("\n");
+}
+
+listing 52
+#include <stdio.h>
+
+void mystrcpy(char *to, char *from);
+
+int main(void)
+{
+  char str[80];
+
+  mystrcpy(str, "this is a test");
+  printf(str);
+
+  return 0;
+}
+
+void mystrcpy(char *to, char *from)
+{
+  while(*from) *to++ = *from++;
+    *to = '\0'; /* null terminates the string */
+}
+
+listing 53
+int main(void)
+{
+  char *p;
+
+  printf("Enter a string: ");
+  gets(p);
+
+  return 0;
+}
+
+listing 54
+char *p, str[80] = "this is a test";
+
+p = str;
+
+listing 55
+#include <stdio.h>
+
+int main(void)
+{
+  char str[80];
+  int i, spaces;
+
+  printf("Enter a string: ");
+  gets(str);
+
+  spaces = 0;
+  for(i=0; str[i]; i++)
+    if(str[i]==' ') spaces++;
+
+  printf("Number of spaces: %d", spaces);
+
+  return 0;
+}
+
+listing 56
+int count[100][10];
+
+count[44][8] = 99;
+

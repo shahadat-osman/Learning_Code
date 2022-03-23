@@ -1,0 +1,134 @@
+listing 1
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+  for(;;) {
+    if(getche()=='a') {
+      auto int t;
+      for(t=0; t<'a'; t++)
+        printf("%d ", t);
+      break;
+    }
+  }
+
+  return 0;
+}
+
+listing 2
+while(x<100) {
+  x = get_new_x();
+  if(kbhit()) break; /* key hit on keyboard */
+  process(x);
+}
+
+listing 3
+char ch;
+
+listing 4
+while(ch=getche()) {
+  if(ch != 's') continue; /* read another char */
+  process(ch);
+}
+
+listing 5
+do {
+  ch = getc(fp);
+  if(!feof(fp)) printf("%c", ch);
+} while(!feof(fp));
+
+listing 6
+double d;
+
+listing 7
+#include <stdio.h>
+
+enum color {red, green, yellow};
+enum color c;
+
+int main(void)
+{
+  c = red;
+  if(c==red) printf("is red\n");
+
+  return 0;
+}
+
+listing 8
+extern int first;
+
+listing 9
+float f;
+
+listing 10
+for(t=0; t<10; t++) printf("Hello\n");
+
+listing 11
+goto lab1;
+  printf("wrong");
+lab1:
+  printf("right");
+
+listing 12
+ch = getche();
+if(ch=='q') {
+  printf("Program Terminated");
+  exit(0);
+}
+else proceed();
+
+listing 13
+int count;
+
+listing 14
+long int count;
+
+listing 15
+register int i;
+
+listing 16
+int mul(int a, int b)
+{
+  return a*b;
+}
+
+listing 17
+short int sh;
+
+listing 18
+printf("%d", sizeof(short int));
+
+listing 19
+static int last_time;
+
+listing 20
+ch = getche();
+
+switch(ch) {
+  case 'e': enter();
+   break;
+  case 'l': list();
+    break;
+  case 's': sort();
+    break;
+  case 'q': exit(0);
+    break;
+  default: printf("Unknown Command\n");
+    printf("Try Again\n");
+}
+
+listing 21
+typedef float balance;
+
+listing 22
+unsigned int big;
+
+listing 23
+t = 0;
+
+while(!feof(fp)) {
+  s[t] = getc(fp);
+  t++;
+}
+
