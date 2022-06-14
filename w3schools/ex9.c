@@ -6,11 +6,11 @@ int main()
     char c='S';
     char d='s';
 
-    printf("%d\n",a);
-    printf("%0.2f\n",b);
+    printf("%d\n%0.2f\n%c\n%c\n",a,b,c,d);
+    /*printf("%0.2f\n",b);
     printf("%c\n", c);
     printf("%c\n", d);
-
+*/
     return 0;
 
 }
