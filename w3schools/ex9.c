@@ -7,7 +7,7 @@ int main()
     char d='s';
 
     printf("%d\n",a);
-    printf("%0.2lf\n",b);
+    printf("%0.2f\n",b);
     printf("%c\n", c);
     printf("%c\n", d);
 
