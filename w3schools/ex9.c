@@ -1,10 +1,9 @@
 #include <stdio.h>
 int  main()
 {
-    int x,y,z;
-    x=y=z=50;
-
-    printf("Ans is = %d\n", x+y+z);
+    int x=2, y=5;
+    
+    printf("value %d", x!=y);
 
     return 0;
 }
