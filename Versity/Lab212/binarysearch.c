@@ -2,11 +2,11 @@
  
 int main()
 {
-    int arr[50],i,n,x,flag=0,first,last,mid;
- 
-    printf("Enter size of array:");
+    int arr[50], i, n, x, flag=0, first, last, mid;
+
+    printf("\nEnter size of array: ");
     scanf("%d",&n);
-    printf("\nEnter array element(ascending order)\n");
+    printf("\nEnter array element\n");
  
     for(i=0;i<n;++i)
         scanf("%d",&arr[i]);
@@ -33,7 +33,7 @@ int main()
     }
  
     if(flag==1)
-        printf("\nElement found at position %d",mid+1);
+        printf("\nElement found at position %d\n",mid+1);
     else
         printf("\nElement not found");
  
