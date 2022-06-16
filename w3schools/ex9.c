@@ -1,16 +1,10 @@
 #include <stdio.h>
-int main()
+int  main()
 {
-    int a= 70;
-    float b=5.6;
-    char c='S';
-    char d='s';
+    int x,y,z;
+    x=y=z=50;
 
-    printf("%d\n%0.2f\n%c\n%c\n",a,b,c,d);
-    /*printf("%0.2f\n",b);
-    printf("%c\n", c);
-    printf("%c\n", d);
-*/
+    printf("Ans is = %d\n", x+y+z);
+
     return 0;
-
 }
