@@ -10,7 +10,7 @@ int main()
     {
         printf("%c is lower case\n\n", L);
     }
-    if (L>='A' && L<='Z')
+    else if (L>='A' && L<='Z')
     {
         printf("%c is upper case.\n\n",L);
     }
