@@ -2,8 +2,8 @@
 int  main()
 {
     int x=2, y=5;
-    
-    printf("value %d", x!=y);
+    x*=3;
+    printf("value%d\n %d", x, (x<y));
 
     return 0;
 }
