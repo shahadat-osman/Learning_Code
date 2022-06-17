@@ -1,21 +1,22 @@
 #include <stdio.h>
 int  main()
 {
-    int x=2, y=6;
+    int x=0, y=6;
+    x*=-3;
 
     printf("X=%d, Y=%d\n", x,y);
 
-    if (x>y)
+    if (x>0)
     {
-        printf("X is greater than Y");
+        printf("X is Positive");
     }
-    else if (x==y)
+    else if (x<0)
     {
-        printf("X is equal to Y");
+        printf("X is Negative");
     }
     else
     {
-        printf("Y is greater than X");
+        printf("X is 0");
     }
 
     return 0;
