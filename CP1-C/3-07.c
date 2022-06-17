@@ -4,11 +4,11 @@ int main()
     int n=3;
     if(n<30)
     {
-        printf("n is less than 30.");
+        printf("n is less than 30.\n");
     }
     if(n<50)
     {
-        printf("n is less than 50");
+        printf("n is less than 50\n");
     }
     return 0;
 }
