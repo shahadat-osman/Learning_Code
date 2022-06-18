@@ -6,7 +6,7 @@ int main()
     printf("Input Letter: ");
     scanf("%c", &L);
 
-    if (L>='a' && L<='Z')
+    if (L>='a' && L<='z')
     {
         printf("%c is lower case\n\n", L);
     }
