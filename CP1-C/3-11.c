@@ -3,7 +3,7 @@ int main()
 {
     char L;
 
-    printf("\nInput Letter: ");
+    printf("Input Letter: ");
     scanf("%c", &L);
 
     if (L>='a' && L<='z')
