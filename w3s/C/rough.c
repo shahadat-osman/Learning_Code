@@ -12,7 +12,7 @@ int main()
         printf("Im there.");
         break;
         case 3:
-        printf("Today offday.");
+        printf("Today is offday.");
         break;
         case 4:
         printf("Far behind from goal.");
