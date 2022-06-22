@@ -3,8 +3,13 @@ using namespace std;
 
 int main()
 {
-    int x=10;
-    
+    int x, y;
+    int sum=x+y;
+    cout << "Type a number: ";
+    cin >> x;
+    cout << "Type another number: ";
+    cin >> y;
+    cout << "Sum is: " << sum;
 
     return 0;
 }
