@@ -1,4 +1,4 @@
-//user input strings
+//user input strings with cin
 #include<iostream>
 using namespace std;
 int main()
