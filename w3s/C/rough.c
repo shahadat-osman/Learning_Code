@@ -1,24 +1,22 @@
 #include<stdio.h>
 int main()
 {
-    int day=3;
+    int num;
 
-    switch (day)
+    printf("Enter a Number: ");
+    scanf("%d", &num);
+
+    if(num>0)
     {
-        case 1:
-        printf("Hello World.");
-        break;
-        case 2:
-        printf("Im there.");
-        break;
-        case 3:
-        printf("Today is offday.");
-        break;
-        case 4:
-        printf("Far behind from goal.");
-        break;
-        default:
-        printf("Nooooo!");
+        printf("The Number is Positive.");
+    }
+    else if(num<0)
+    {
+        printf("The Number is Negative.");
+    }
+    else if(num==0)
+    {
+        printf("The number is zero.");
     }
     return 0;
 }
