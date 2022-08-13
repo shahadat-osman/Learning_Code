@@ -46,7 +46,7 @@ int main()
     printf("%d Hello Shahadat\n", p);
    } */
 
-   //while loop with break
+   /* //while loop with break
    while (num<10)
    {
     if (num==4)
@@ -55,7 +55,19 @@ int main()
     }
     printf("%d Today is friday\n", num);
     num++;
-   }
+   } */
+
+   /* //while loop with continue
+   while (num<8)
+   {
+    if (num==5)
+    {
+        num++;
+        continue;
+    }
+    printf("%d Hello Tahsin\n", num);
+    num++;
+   } */
 
     return 0;
 }
