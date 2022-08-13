@@ -3,14 +3,14 @@ int main()
 {
     int n, p, num=0;
 
-   /* //while loop
+    /* //while loop
     while (num<=5)
    {
     printf("%d Hello World\n", num);
     num++;
    } */
 
-   /* //do loop
+    /* //do loop
    do
    {
     printf("Hello Tech People %d\n", num);
@@ -18,7 +18,7 @@ int main()
    }
    while (num<=10); */
 
-   /* //for loop
+    /* //for loop
     for (n=1; n<=10; n=n+2)
    {
    printf("Hello Programmers! %d\n", n);
@@ -46,7 +46,7 @@ int main()
     printf("%d Hello Shahadat\n", p);
    } */
 
-   /* //while loop with break
+    /* //while loop with break
    while (num<10)
    {
     if (num==4)
@@ -57,7 +57,7 @@ int main()
     num++;
    } */
 
-   /* //while loop with continue
+    /* //while loop with continue
    while (num<8)
    {
     if (num==5)
@@ -69,5 +69,6 @@ int main()
     num++;
    } */
 
+    
     return 0;
 }
