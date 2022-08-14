@@ -1,4 +1,4 @@
-//all about loop.
+//all about loop
 #include<stdio.h>
 int main()
 {
