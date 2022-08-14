@@ -1,3 +1,4 @@
+//all about loop
 #include<stdio.h>
 int main()
 {
@@ -69,6 +70,6 @@ int main()
     num++;
    } */
 
-    
+
     return 0;
 }
