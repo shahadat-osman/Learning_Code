@@ -1,75 +1,65 @@
-//all about loop
+//all about loop & break and continue;
 #include<stdio.h>
 int main()
 {
-    int n, p, num=0;
+    int q, r, n, m=1, z=1, p=0, num=0;
 
-    /* //while loop
-    while (num<=5)
+   while (num<6)
    {
-    printf("%d Hello World\n", num);
+    printf("%d Nothing is impossible\n", num);
     num++;
-   } */
+   }
 
-    /* //do loop
    do
    {
-    printf("Hello Tech People %d\n", num);
-    num=num+2;
+    printf("\n%d Everything is possible\n", p);
+    p++;
    }
-   while (num<=10); */
+   while (p<8);
 
-    /* //for loop
-    for (n=1; n<=10; n=n+2)
+   for (n=0; n<9; n=n+2)
    {
-   printf("Hello Programmers! %d\n", n);
-   } */
+    printf("%d Work hard and succeed\n", n);
+   }
 
-    /* //for loop with break
-    int i;
-   for (i=0; i<10; i++)
+   for (q=0; q<7; q++)
    {
-    if(i==4) 
+    {
+        if (q==3)
+        break;
+    }
+    printf("\n%d Practice makes Perfect\n", q);
+   }
+
+   for (r=1; r<5; r++)
+   {
+    {
+        if (r==3)
+        continue;
+    }
+    printf("%d God is One\n", r);
+   }
+
+   while (z<7)
+   {
+    if (z==5)
     {
         break;
     }
-    printf("%d Hello Coder\n", i);
-   } */
-
-    /* //for loop with continue
-   for (p=1; p<=10; p++)
+    printf("%d Do more and more\n", z);
+    z++;
+   }
+   
+   while (m<9)
    {
-    if (p==6)
+    if (m==5)
     {
-        printf("%d Not Allowed\n", p);
+        m++;
         continue;
     }
-    printf("%d Hello Shahadat\n", p);
-   } */
-
-    /* //while loop with break
-   while (num<10)
-   {
-    if (num==4)
-    {
-        break;
-    }
-    printf("%d Today is friday\n", num);
-    num++;
-   } */
-
-    /* //while loop with continue
-   while (num<8)
-   {
-    if (num==5)
-    {
-        num++;
-        continue;
-    }
-    printf("%d Hello Tahsin\n", num);
-    num++;
-   } */
-
+    printf("%d Laziness will make you looser\n", m);
+    m++;
+   }
 
     return 0;
 }
