@@ -1,16 +1,13 @@
 #include<stdio.h>
-int func();
+void sqr_it(int num);
 
 int main()
 {
-    int num;
-    num=func();
-
-    printf("%d", num);
+    sqr_it(10.0);
     
     return 0;
 }
-int func(void)
+void sqr_it(int num)
 {
-    return 10;
+    printf("%d", num*num);
 }
