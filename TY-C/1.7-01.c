@@ -1,26 +1,21 @@
-/* A program with three functions */
+/* A program with two functions */
 #include <stdio.h>
 void func1(); //prototype of function
 void func2();
-void func3();
 
 int  main(void)
 {
     func1();
     func2();
-    func3();
+    printf("C.");
 
     return 0;
-}
-void func2()
-{
-    printf("Like ");
 }
 void func1()
 {
     printf("I ");
 }
-void func3()
+void func2()
 {
-    printf("You.");
+    printf("Like ");
 }
