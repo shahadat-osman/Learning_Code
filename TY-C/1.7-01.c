@@ -1,4 +1,4 @@
-/* A program with two functions */
+/* A program with three functions */
 #include <stdio.h>
 void func1();
 void func2();
