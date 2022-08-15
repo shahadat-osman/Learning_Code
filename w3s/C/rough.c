@@ -2,14 +2,14 @@
 #include<stdio.h>
 int main()
 {
-    int q, r, n, m=1, z=1, p=0, num=0;
+   char L;
+   int n;
 
-    printf("%d\n", num++);
-    printf("%d\n", num++);
-    printf("%d\n", num++);
-    printf("%d\n", num++);
-    printf("%d\n", num++);
-    printf("%d\n", num++);
+   printf("Input a letter: ");
+   scanf("%c", &L);
+
+   (L>='a' && L<='z')? printf("%c is lower case", L): printf("%c is upper case.", L);
+   (n>=0 && n<=9)? printf("%i is a number", n): printf("%i is wrong Input", n);
     
 
     return 0;
