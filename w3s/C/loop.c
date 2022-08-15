@@ -35,6 +35,7 @@ int whileLoop()
 }
 int doLoop()
 {
+    int dl=1;
     do
     {
         printf(" %d do loop\n", dl);
