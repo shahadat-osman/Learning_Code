@@ -1,6 +1,6 @@
 /* A program with three functions */
 #include <stdio.h>
-void func1();
+void func1(); //prototype of function
 void func2();
 void func3();
 

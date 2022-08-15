@@ -1,6 +1,6 @@
 // all loops in different functions
 #include<stdio.h>
-int whileLoop();
+int whileLoop();    //prototype of function
 int doLoop();
 int forLoop();
 int forBreak();
