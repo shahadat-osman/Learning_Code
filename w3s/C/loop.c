@@ -1,3 +1,4 @@
+// all loops in different functions
 #include<stdio.h>
 int whileLoop();
 int doLoop();
