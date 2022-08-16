@@ -1,18 +1,20 @@
 #include<stdio.h>
-double o_to_c();
-
-    double ounce;
+int o_to_c(int o);
 
 int main()
 {
-    printf("In Cup: %.2lf", o_to_c());
+    int o ,ounces;
+    int cups;
+
+    printf("enter ounces: ");
+    scanf("%d", &ounces);
+
+    cups=o_to_c(ounces);
+    printf("%d cups.", cups);
 
     return 0;
 }
-double o_to_c()
+int o_to_c(int o)
 {
-    printf("enter weight in ounce(s):");
-    scanf("%lf", &ounce);
-
-    return ounce/8;
+    return o/8;
 }
