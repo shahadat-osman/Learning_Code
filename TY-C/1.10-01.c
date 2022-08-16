@@ -2,7 +2,7 @@
 #include<stdio.h>
 int main()
 {
-    float weight, m_weight, conversion=17/100;
+    float weight, m_weight, conversion=17.0/100;
 
     printf("Enter weight on earth:");
     scanf("%f", &weight);
