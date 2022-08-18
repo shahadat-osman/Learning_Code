@@ -1,9 +1,9 @@
 #include<stdio.h>
-int o_to_c(int o);
+int o_to_c(int O);
 
 int main()
 {
-    int o ,ounces;
+    int O ,ounces;
     int cups;
 
     printf("enter ounces: ");
@@ -14,7 +14,7 @@ int main()
 
     return 0;
 }
-int o_to_c(int o)
+int o_to_c(int O)
 {
-    return o/8;
+    return O/8;
 }
