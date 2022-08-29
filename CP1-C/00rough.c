@@ -3,15 +3,13 @@ int main()
 {
     int num=0;
 
-    while(num<10)
+    for(num=1; num<10; num++)
     {
-        if(num==4)
-        {
-            break;
+        {if(num==4)
+        
+            continue;
         }
-        printf("%d hola!\n", num);
-        num++;
+        printf("%d dope\n", num);
     }
-
     return 0;
 }
