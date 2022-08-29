@@ -9,10 +9,11 @@ int main()
         
         if(!(n%2==0))
         {
+            printf("%d odd\n", n);
             continue;
         }
-        printf("%d-%d\n",n, n1);
-        n1++;
+        printf("%d even\n",n);
+        
     }
     return 0;
 }
