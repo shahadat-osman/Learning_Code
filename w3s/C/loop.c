@@ -13,13 +13,13 @@ int wl=0, dl=0, fl, fb, fc, wb=0, wc=0;
 int main()
 {
     whileLoop();
+    whileBreak();
+    whileContinue();
     doLoop();
     forLoop();
     forBreak();
     forContinue();
-    whileBreak();
-    whileContinue();
-
+    
     return 0;
 }
 
@@ -30,6 +30,33 @@ int whileLoop()
     {
         printf("%d while loop\n", wl);
         wl++;
+    }
+    return 0;
+}
+int whileBreak()
+{
+    while(wb<4)
+    {
+        if(wb==2)
+        {
+            break;
+        }
+        printf("     %d while break\n", wb);
+        wb++;
+    }
+    return 0;
+}
+int whileContinue()
+{
+    while(wc<4)
+    {
+        if(wc==2)
+        {
+            wc++;
+            continue;
+        }
+        printf("      %d while continue\n", wc);
+        wc++;
     }
     return 0;
 }
@@ -73,33 +100,6 @@ int forContinue()
             continue;
         }
         printf("    %d for continue\n", fc);
-    }
-    return 0;
-}
-int whileBreak()
-{
-    while(wb<4)
-    {
-        if(wb==2)
-        {
-            break;
-        }
-        printf("     %d while break\n", wb);
-        wb++;
-    }
-    return 0;
-}
-int whileContinue()
-{
-    while(wc<4)
-    {
-        if(wc==2)
-        {
-            wc++;
-            continue;
-        }
-        printf("      %d while continue\n", wc);
-        wc++;
     }
     return 0;
 }
