@@ -1,13 +1,24 @@
 #include<stdio.h>
 int main()
 {
-    int num;
-    printf("Enter a number:");
-    scanf("%d", &num);
+    float num; 
+    int choice;
 
-    if(num<0) { printf("The number is negative."); }
-    if(num>-1) { printf("The number is non negative."); }
-    
+    printf("Enter value:");
+    scanf("%f", &num);
+
+    printf("1. Feet to meter.\n2. Meter to feet.\n");
+    printf("Enter your choice:\n");
+    scanf("%d", &choice);
+
+    if(choice==1)
+    {
+        printf("Result: %f meters", num/3.28);
+    }
+    if(choice==2)
+    {
+        printf("Result: %f feets", num*3.28);
+    }
     
     return 0;
 }
