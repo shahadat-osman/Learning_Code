@@ -1,13 +1,13 @@
 #include<stdio.h>
-void sqr_it(int num);
-
 int main()
 {
-    sqr_it(10.0);
+    int num;
+    printf("Enter a number:");
+    scanf("%d", &num);
+
+    if(num<0) { printf("The number is negative."); }
+    if(num>-1) { printf("The number is non negative."); }
+    
     
     return 0;
-}
-void sqr_it(int num)
-{
-    printf("%d", num*num);
 }
