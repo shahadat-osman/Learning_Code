@@ -14,11 +14,15 @@ int main()
         scanf("%f", &num);
         printf("Meters: %f", num/3.28);
     }
-    else
+    else if(choice==2)
     {
         printf("Enter number of meter:");
         scanf("%f", &num);
         printf("Feet: %f", num*3.28);
+    }
+    else
+    {
+        printf("Wrong choice.");
     }
 
     return 0;
