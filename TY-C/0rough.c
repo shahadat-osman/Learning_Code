@@ -1,19 +1,10 @@
 #include<stdio.h>
 int main()
 {
-    int num, sum, prod, h=1;
-    sum=0;
-    prod=1;
+    int i,j;
 
-    for(num=10; num>6; num--)
-    {
-        sum=sum+num;
-        prod=prod*num;
-    }
-    printf("product and sum: %d %d\n", prod ,sum);
-
-    h=prod+h;
-    printf("%d", h);
+    for(i=1; i<100; i=i+4)
+    printf("%d-%d\n",j++, i);
     
     return 0;
 }
