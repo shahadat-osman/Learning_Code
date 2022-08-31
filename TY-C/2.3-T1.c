@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int n1, n2, answer, choice;
+    int n1, n2, choice;
 
     printf("1.Add two numbers.\n2.Substracts two numbers.\n");
     printf("Enter Choice-");
