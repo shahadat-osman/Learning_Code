@@ -1,17 +1,18 @@
 #include<stdio.h>
 int main()
 {
-    int i,j;
+    int i;
 
-    printf("Enter the number to be tested:\n");
-    scanf("%d", &j);
+    printf("Enter a number:\n");
+    scanf("%d", &i);
 
-    for(i=1; i<=j; i++)
+    if(i%2==0)
     {
-        if((j%i)==0)
-        {
-            printf("%d\n",i);
-        }
+        printf("This is not prime number.");
+    }
+    else if(i%2==1)
+    {
+        printf("This is prime number.");
     }
     return 0;
 }
