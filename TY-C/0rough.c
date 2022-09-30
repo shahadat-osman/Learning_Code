@@ -1,18 +1,10 @@
 #include<stdio.h>
 int main()
 {
-    int i;
+    int i,j, result;
 
     printf("Enter a number:\n");
-    scanf("%d", &i);
+    scanf("%d", &j);
 
-    if(i%2==0)
-    {
-        printf("This is not prime number.");
-    }
-    else if(i%2==1)
-    {
-        printf("This is prime number.");
-    }
-    return 0;
+    
 }
