@@ -10,5 +10,5 @@ int main()
     {
         fact=fact*i;
     }
-    cout<<number<<"! equal is: "<<fact<<endl;
+    cout<<number<<"! is equal: "<<fact<<endl;
 }
