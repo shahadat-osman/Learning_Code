@@ -1,16 +1,23 @@
-//all about loop
+//write a program to show letter grade of given marks
 #include<stdio.h>
 int main()
 {
-   char L;
-   int n;
+    int m;
 
-   printf("Input a letter: ");
-   scanf("%c", &L);
+    printf("Enter Marks:\n");
+    scanf("%d", &m);
 
-   (L>='a' && L<='z')? printf("%c is lower case", L): printf("%c is upper case.", L);
-   (n>=0 && n<=9)? printf("%i is a number", n): printf("%i is wrong Input", n);
-    
-
+    if(m>=90 && m<=100)
+    {
+        printf("A grade");
+    }
+    if(m>=80 && m<=89)
+    {
+        printf("B grade");
+    }
+    else
+    {
+        printf("Failed.");
+    }
     return 0;
 }

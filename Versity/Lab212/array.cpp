@@ -2,18 +2,18 @@
 using namespace std;
 int main()
 {
-    int i, number[5];
+    int x, num[5];
 
     cout<<"Enter five numbers\n";
 
-    for(i=0; i<5; i++)
-    cin>>number[i];
+    for(x=0; x<5; x++)
+    cin>>num[x];
     cout<<"The numbers are: ";
 
-    for(i=0; i<5; i++)
-    cout<<number[i]<<" ";
+    for(x=0; x<5; x++)
+    cout<<num[x]<<" ";
 //reverse of that array
     cout<<"Reverse are: ";
-    for(i=4; i>=0; i--)
-    cout<<number[i]<<" ";
+    for(x=4; x>=0; x--)
+    cout<<num[x]<<" ";
 }
