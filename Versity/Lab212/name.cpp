@@ -4,7 +4,7 @@ int main()
 {
     char name[50];
 
-    cout<<"Write Your Last Name:";
+    cout<<"Write Your Last Name:\n";
     cin>>name;
-    cout<<"Hey! "<<name;
+    cout<<"Hey! "<<name<<endl;
 }
