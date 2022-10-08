@@ -81,7 +81,6 @@ TY-C/2.4-E1
 TY-C/2.4-vvi
 TY-C/2.4-01
 TY-C/2.4-T1
-.gitignore
 TY-C/2.4-02
 Versity/Lab212/factorial
 Versity/Lab212/array
@@ -91,3 +90,6 @@ Versity/Lab212/name
 Versity/Lab212/rough
 Versity/C/test
 CP1-C/3/3-09test
+CP1-C/3/3-10
+CP1-C/3/3-11
+CP1-C/00.c
