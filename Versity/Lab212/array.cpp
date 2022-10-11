@@ -11,9 +11,9 @@ int main()
     cout<<"The numbers are: ";
 
     for(x=0; x<5; x++)
-    cout<<num[x]<<" ";
+    cout<<num[x]<<" "<<endl;
 //reverse of that array
-    cout<<"Reverse are: ";
+    cout<<"\nReverse are: ";
     for(x=4; x>=0; x--)
     cout<<num[x]<<" ";
 }
