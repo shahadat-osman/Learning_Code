@@ -14,7 +14,7 @@ int main()
     {
         if(paragraph[i]==' ')
             space++;
-        if(paragraph[i]=='.' || paragraph[i]=='?')
+        if(paragraph[i]=='.')
             fstop++;
     }
 
