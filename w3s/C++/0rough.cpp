@@ -2,11 +2,11 @@
 using namespace std;
 int main()
 {
-    float n=3.14159, R, A;
-    
-    cin>>R;
-    A=n*R*R;
-    cout<<"A="<<A<<endl;
+    string fname, lname, fullname;
+
+    cin>>fname>>lname;
+    fullname=fname.append(lname);
+    cout<<fullname;
     
     return 0;
 }
