@@ -3,9 +3,9 @@ using namespace std;
 
 int main()
 {   
-    int num=10;
-    cout<<"hello world";
-    cout<<num<<"\nIm learning C\"hello\"";
-
+    int x, y;
+    int a=36e7;
+    
+    cout<<"\n"<<a;
     return 0;
 }

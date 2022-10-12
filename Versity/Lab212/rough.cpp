@@ -1,29 +1,11 @@
 #include<iostream>
 using namespace std;
 
-class myclass
-{
-    int a;
-    public:
-    myclass(); //constructor
-    void show();
-
-};
-
-myclass::myclass()
-{
-    cout<<"In constructor\n";
-    a=10;
-}
-
-void myclass::show()
-{
-    cout<<a<<"\n";
-}
 int main()
 {
-    myclass ob;
-    ob.show();
+    int x, y;
+    float a=35e3;
 
+    cout<<"\n"<<a;
     return 0;
 }
