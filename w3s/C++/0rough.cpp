@@ -1,11 +1,12 @@
 #include<iostream>
 using namespace std;
-
 int main()
-{   
-    int x, y;
-    int a=36e7;
+{
+    float n=3.14159, R, A;
     
-    cout<<"\n"<<a;
+    cin>>R;
+    A=n*R*R;
+    cout<<"A="<<A<<endl;
+    
     return 0;
 }
