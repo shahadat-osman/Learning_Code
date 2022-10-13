@@ -1,11 +1,12 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 int main()
 {
-    int x,y;
-    cin>>x>>y;
-    
-    cout<<"Maximum is:"<<max(x,y)<<endl<<"Minimum is:"<<min(x,y)<<endl;
+    int x;
+
+    cin>>x;
+    cout<<pow(x,3);
 
     return 0;
 }
