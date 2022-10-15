@@ -3,10 +3,8 @@
 using namespace std;
 int main()
 {
-    int x;
+    int x=10, y=12;
 
-    cin>>x;
-    cout<<pow(x,3);
-
+    cout<<(x<y);
     return 0;
 }
