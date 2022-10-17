@@ -11,7 +11,7 @@ int main()
         t_marks=marks+t_marks;
         i++;
     }
-    avg=t_marks/(i-1);
+    avg=t_marks/10;
     printf("Total marks = %.2f\n", t_marks);
     printf("Average marks = %.2f", avg);
     return 0;
