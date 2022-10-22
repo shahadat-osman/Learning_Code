@@ -1,15 +1,17 @@
 #include<stdio.h>
 int main()
 {
-    int a=3, b=11,quotient,remainder,multiply;
-    quotient=b/a;
-    multiply=quotient*a;
-    remainder=b-multiply;
-    printf("Ans is %d", remainder);
-
-
-
-
-
+    int t,i=0, j;
+    scanf("%d", &t);
+    while(i<t)
+    {
+        scanf("%d",&j);
+        if(j%2==0)
+        printf("even\n");
+        else
+        printf("odd\n");
+        i++;
+    }
+    
     return 0;
 }
