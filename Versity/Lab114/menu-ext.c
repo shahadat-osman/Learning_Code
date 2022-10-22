@@ -9,16 +9,21 @@ int main()
     printf("1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n");
     printf("Enter your choice from above-\nEx:(1/2/3/4)::\n");
     scanf("%d", &choice);
-    if(choice<1 || choice>4)
+    if(choice!=1 || choice!=2 || choice!=3 || choice!=4)
     {
         printf("Wrong choice!\n");
         printf("Try again?(Y/N):\n");
         scanf(" %c", &try);
 
-        if(try=='Y'|| try=='y')
+        if(try=='Y' || try=='y')
+        {
             return main();
-        else if(try=='N'|| try=='n')
+        }
+        else if(try=='N' || try=='n')
+        {
             printf("Thank You\n");
+            return 0;
+        }
     }
     else
     {
@@ -47,9 +52,6 @@ int main()
             printf("%d / %d = %d\n", num1, num2, num1/num2);
             printf("%d %% %d = %d\n", num1, num2, num1%num2);
             break;
-        
-            default:
-            printf("Wrong choice!");
         }
     }
     return 0;

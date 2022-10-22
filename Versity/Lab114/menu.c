@@ -27,8 +27,6 @@ int main()
             case 4:
             printf("The substraction is %d/%d = %d", num1, num2, num1/num2);
             break;
-            default:
-            printf("Invalid!\n");
         }
     }
     return 0;
