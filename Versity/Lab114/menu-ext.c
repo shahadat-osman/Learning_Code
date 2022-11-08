@@ -8,24 +8,10 @@ int main()
 {   
     printf("1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n");
     printf("Enter your choice from above-\nEx:(1/2/3/4)::\n");
-    scanf("%d", &choice);
-    if(choice!=1 || choice!=2 || choice!=3 || choice!=4)
-    {
-        printf("Wrong choice!\n");
-        printf("Try again?(Y/N):\n");
-        scanf(" %c", &try);
 
-        if(try=='Y' || try=='y')
-        {
-            return main();
-        }
-        else if(try=='N' || try=='n')
-        {
-            printf("Thank You\n");
-            return 0;
-        }
-    }
-    else
+    scanf(" %d", &choice);
+
+    if(choice==1 || choice==2 || choice==3 || choice==4)
     {
         ifFunc();
 
@@ -47,11 +33,30 @@ int main()
 
             case 4:
             if(num2==0)
-            printf("Cannot Divide by zero\n");
+                printf("Cannot Divide by zero\n");
             else
-            printf("%d / %d = %d\n", num1, num2, num1/num2);
-            printf("%d %% %d = %d\n", num1, num2, num1%num2);
+            {
+                printf("%d / %d = %d\n", num1, num2, num1/num2);
+                printf("%d %% %d = %d\n", num1, num2, num1%num2);
+            }
             break;
+        }
+        
+    }
+    if(choice>='a' || choice<='z' && choice>='A' || choice<='Z')
+    {   choice='\0';
+        printf("Wrong choice!\n");
+        printf("Try again?(Y/N):\n");
+        scanf(" %c", &try);
+        choice='\0';
+        if(try=='Y' || try=='y')
+        {   
+            return main();
+        }
+        else if(try=='N' || try=='n')
+        {
+            printf("Thank You\n");
+            return 0;
         }
     }
     return 0;
