@@ -7,7 +7,11 @@
 	],
 	"settings": {
 		"files.associations": {
-			"stdio.h": "c"
+			"*.html": "html",
+			"stdio.h": "c",
+			"iostream": "cpp",
+			"iosfwd": "cpp",
+			"istream": "cpp"
 		}
 	}
 }
