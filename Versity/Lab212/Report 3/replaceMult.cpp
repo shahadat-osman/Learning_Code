@@ -10,8 +10,9 @@ string sub_str(string txt, int pos, int len)
     }
     return str;
 }
-string insrt(string txt, int pos, string ptrn){
-    
+string insrt(string txt, int pos, string ptrn)
+{
+
     string s_str1, s_str2, s_str3, s_str;
     s_str1 = sub_str(txt, 0, pos);
     s_str2 = ptrn;
@@ -47,25 +48,30 @@ int ptrnMatch(string txt, string ptrn)
     }
     return -2;
 }
-string replace(string text, string p1, string p2)
+string replacemult(string txt, string del, string n_t)
 {
-    int ind = ptrnMatch(text, p1);
-    string ntext = text;
-    ntext = deletion(ntext, ind, p1.size());
-    ntext = insrt(ntext, ind, p2);
-    return ntext;
+    int ind;
+    ind = ptrnMatch(txt, del);
+    string n_txt = txt;
+    while (ind != -2)
+    {
+        n_txt = deletion(n_txt, ind, del.size());
+        n_txt = insrt(n_txt, ind, n_t);
+        ind = ptrnMatch(n_txt, del);
+    }
+    return n_txt;
 }
 int main()
 {
-    string rplc, text, del, rep;
-    cout<<"Text: ";
-    getline(cin, text);
-    cout<<"Delete: ";
+    string rplc, txt, del, rep;
+    cout << "Text: ";
+    getline(cin, txt);
+    cout << "Delete: ";
     getline(cin, del);
-    cout<<"Replaced: ";
+    cout << "Replaced: ";
     getline(cin, rep);
-    rplc = replace(text, del, rep);
-    cout <<"New Text: " << rplc << endl;
+    rplc = replacemult(txt, del, rep);
+    cout << "New Text: " << rplc << endl;
 
     return 0;
 }
