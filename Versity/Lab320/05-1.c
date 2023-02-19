@@ -12,39 +12,42 @@ int main()
         switch(state)
         {
             case 0:
-            //{
                 ch=str[i++];
                 if(ch=='a')
                     state=1;
+
                 else if(ch=='b')
                     state=2;
+
                 else
                     state=3;
-            //}
-            break;
+
+                break;
             case 1:
-            //{
                 ch=str[i++];
                 if(ch=='a' && str[strlen(str)-1]=='b')
                     state=1;
+
                 else if(ch=='b')
                     state=2;
+
                 else 
                     state=3;
-            //}
-            break;
+
+                break;
             case 2:
-            //{
                 ch=str[i++];
                 if(ch=='b')
                     state=2;
+
                 else
                     state=3;
-            //}
-            break;
+
+                break;
             case 3:
                 ch=str[i++];
                     state=3;
+                    
                 break;
         }
     }

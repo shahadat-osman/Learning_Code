@@ -11,7 +11,8 @@
 			"stdio.h": "c",
 			"iostream": "cpp",
 			"iosfwd": "cpp",
-			"istream": "cpp"
+			"istream": "cpp",
+			"sstream": "c"
 		}
 	}
 }
