@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<string.h>
-
 int main()
 {
     char str[20], ch;
@@ -15,39 +14,30 @@ int main()
                 ch=str[i++];
                 if(ch=='a')
                     state=1;
-
                 else if(ch=='b')
                     state=2;
-
                 else
                     state=3;
-
                 break;
             case 1:
                 ch=str[i++];
                 if(ch=='a' && str[strlen(str)-1]=='b')
                     state=1;
-
                 else if(ch=='b')
-                    state=2;
-
+                    state=1;
                 else 
                     state=3;
-
                 break;
             case 2:
                 ch=str[i++];
                 if(ch=='b')
                     state=2;
-
                 else
                     state=3;
-
                 break;
             case 3:
                 ch=str[i++];
                     state=3;
-                    
                 break;
         }
     }
@@ -57,5 +47,4 @@ int main()
         printf("Accepted Under a*b+\n");
     else if(state==2)
         printf("Accepted Under b+\n");
-
 }
