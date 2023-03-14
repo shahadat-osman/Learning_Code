@@ -48,13 +48,13 @@ int main()
         if (str[0] == 'a')
         {
             if ((str[i] == 'a' && str[len - 1] == 'b') || (str[i] == 'b' && (str[i + 1] == 'b' || str[i + 1] == '\0')))
-            
+
                 state = 1;
 
             else
                 state = 0;
         }
-        
+
         else if (str[0] == 'b')
         {
             if (str[i] == 'b')

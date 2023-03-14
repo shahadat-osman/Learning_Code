@@ -15,36 +15,43 @@ int main()
             if (ch == 'a')
                 state = 1;
             else if (ch == 'b')
-                state = 2;
+                state = 0;
             else
-                state = 3;
+                state = 6;
             break;
         case 1:
             ch = str[i++];
-            if (ch == 'a' && str[strlen(str) - 1] == 'b')
+            if (ch == 'a')
                 state = 1;
             else if (ch == 'b')
-                state = 1;
+                state = 2;
             else
-                state = 3;
+                state = 6;
             break;
         case 2:
             ch = str[i++];
-            if (ch == 'b')
-                state = 2;
-            else
+            if (ch == 'a')
                 state = 3;
+            else
+                state = 6;
             break;
         case 3:
             ch = str[i++];
-            state = 3;
+            if (ch == 'a')
+                state = 3;
+            else if (ch == 'b')
+                state = 3;
+            else
+                state = 6;
+            break;
+        case 6:
+            ch = str[i++];
+            state = 6;
             break;
         }
     }
-    if (state == 3)
+    if (state != 3)
         printf("Not Accepted\n");
-    else if (state == 1)
-        printf("Accepted Under a*b+\n");
-    else if (state == 2)
-        printf("Accepted Under b+\n");
+    else if (state == 3)
+        printf("Accepted\n");
 }
