@@ -12,7 +12,8 @@
 			"iostream": "cpp",
 			"iosfwd": "cpp",
 			"istream": "cpp",
-			"sstream": "c"
+			"sstream": "c",
+			"string": "cpp"
 		}
 	}
 }

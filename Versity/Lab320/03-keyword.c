@@ -8,8 +8,8 @@ int main()
                                      "static", "while","default", "goto", "sizeof", "volatile", "const", "float", "short", "unsigned"};
     
     printf("Enter a Keyword: ");
-    gets(string);
-    //fgets(string, sizeof(string), stdin);
+    //gets(string);
+    fgets(string, sizeof(string), stdin);
 
     for(i=0; i<32; i++)
     {
