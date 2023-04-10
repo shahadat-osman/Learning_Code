@@ -12,7 +12,7 @@ int main()
     cout << "Total: ";
     cin >> n;
 
-    cout << "CGF:\n";
+    cout << "CFG:\n";
     for (i = 1; i <= n; i++)
         cin >> grammar[i];
 

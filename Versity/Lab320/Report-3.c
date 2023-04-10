@@ -5,6 +5,7 @@ int main()
     char str[20], ch;
     int state = 0, i = 0;
 
+    printf("Enter String: ");
     scanf("%s", str);
     while (str[i] != '\0')
     {

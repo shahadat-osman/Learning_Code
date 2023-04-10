@@ -46,7 +46,10 @@ int main()
             break;
         case 6:
             ch = str[i++];
-            state = 6;
+            if(ch=='a')
+                state = 1;
+            else
+                state = 6;
             break;
         }
     }

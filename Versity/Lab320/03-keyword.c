@@ -3,13 +3,13 @@
 int main()
 {
     int flag=0, i;
-    char string[10], keyword[32][10]={"double", "for", "else", "if", "auto", "int", "struct", "break", "long", "switch", "case", "enum",
-                                     "register","typedef", "char", "extern", "return", "union", "continue", "signed", "void", "do", 
-                                     "static", "while","default", "goto", "sizeof", "volatile", "const", "float", "short", "unsigned"};
+    char string[10]; 
+    char keyword[32][10]={"double", "for", "else", "if", "auto", "int", "struct", "break", "long", "switch", "case", "enum",
+        "register","typedef", "char", "extern", "return", "union", "continue", "signed", "void", "do", 
+        "static", "while","default", "goto", "sizeof", "volatile", "const", "float", "short", "unsigned"};
     
     printf("Enter a Keyword: ");
-    //gets(string);
-    fgets(string, sizeof(string), stdin);
+    scanf("%s", string);
 
     for(i=0; i<32; i++)
     {
