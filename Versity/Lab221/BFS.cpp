@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> graph[1000];
+vector<bool> vstd;
+void bfs(int x)
+{
+    queue<int> qu;
+    qu.push(x);
+    vstd[x] = true;
+    cout << x << " ";
+
+    while (!qu.empty())
+    {
+        int v = qu.front();
+        qu.pop();
+        for (int i : graph[v])
+        {
+            if (!vstd[i])
+            {
+                qu.push(i);
+                vstd[i] = true;
+                cout << i << " ";
+            }
+        }
+    }
+}
+
+int main()
+{
+    int node, edge, i, node1, node2, source;
+
+    cout << "Nodes and Edges:\n";
+    cin >> node >> edge;
+
+    cout << "The graph:\n";
+    for (i = 0; i < edge; i++)
+    {
+        cin >> node1 >> node2;
+        graph[node1].push_back(node2);
+        graph[node2].push_back(node1);
+    }
+
+    vstd.assign(node, false);
+
+    cout << "Source node: ";
+    cin >> source;
+
+    cout << "BFS path is: ";
+    bfs(source);
+
+    return 0;
+}

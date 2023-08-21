@@ -13,7 +13,8 @@
 			"iosfwd": "cpp",
 			"istream": "cpp",
 			"sstream": "c",
-			"string": "cpp"
+			"string": "cpp",
+			"queue": "cpp"
 		}
 	}
 }
