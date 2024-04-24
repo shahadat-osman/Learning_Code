@@ -1,0 +1,173 @@
+//  main.cpp
+//  Lab_CSE_322
+//  Flag Draw
+
+#include <iostream>
+#include <GLUT/glut.h>
+using namespace std;
+
+float x, y, x1, y_1, x2, y2, x3, y3, x4, y4;
+float r, Xc, Yc, a, b, P;
+
+void mid_point_circle()
+{
+    P = 1 - r;
+    a = 0;
+    b = r;
+
+    while (a <= b)
+    {
+        glBegin(GL_POINTS);
+            glVertex2f(Xc + a, Yc + b);
+            glVertex2f(Xc + b, Yc + a);
+            glVertex2f(Xc - b, Yc + a);
+            glVertex2f(Xc - a, Yc + b);
+            glVertex2f(Xc - a, Yc - b);
+            glVertex2f(Xc - b, Yc - a);
+            glVertex2f(Xc + b, Yc - a);
+            glVertex2f(Xc + a, Yc - b);
+        glEnd();
+
+        if (P < 0)
+        {
+            a++;
+            P = P + (2 * a) + 3;
+        }
+
+        else
+        {
+            a++;
+            b--;
+            P = P + 2 * (a - b) + 5;
+        }
+    }
+
+    glFlush();
+}
+
+void hor(float ax, float ay, float bx, float by)
+{
+    float dx = bx - ax;
+    float dy = by - ay;
+    glBegin(GL_POINTS);
+    glVertex2f(ax, ay);
+    glEnd();
+    float di = 2 * dy - dx;
+    int i = 0;
+    for (i = 0; i < abs(dx); i++)
+    {
+        if (di < 0)
+        {
+            x = ax + 1;
+            y = ay;
+            glBegin(GL_POINTS);
+            glVertex2f(x, y);
+            glEnd();
+            di = di + 2 * dy;
+        }
+        else
+        {
+            x = ax;
+            y = ay + 1;
+            glBegin(GL_POINTS);
+            glVertex2f(x, y);
+            glEnd();
+            di = di + 2 * dy - 2 * dx;
+        }
+        ax = x;
+        ay = y;
+    }
+    glBegin(GL_POINTS);
+    glVertex2f(bx, by);
+    glEnd();
+
+    glFlush();
+}
+void ver(float ax, float ay, float bx, float by)
+{
+    float dx = bx - ax;
+    float dy = by - ay;
+    glBegin(GL_POINTS);
+    glVertex2f(ax, ay);
+    glEnd();
+    float di = 2 * dx - dy;
+    int i = 0;
+    for (i = 0; i < abs(dy); i++)
+    {
+        if (di < 0)
+        {
+            y = ay + 1;
+            x = ax;
+            glBegin(GL_POINTS);
+            glVertex2f(x, y);
+            glEnd();
+            di = di + 2 * dx;
+        }
+        else
+        {
+            y = ay;
+            ax = ax + 1;
+            glBegin(GL_POINTS);
+            glVertex2f(x, y);
+            glEnd();
+            di = di + 2 * dx - 2 * dy;
+        }
+        ax = x;
+        ay = y;
+    }
+    glBegin(GL_POINTS);
+    glVertex2f(bx, by);
+    glEnd();
+
+    glFlush();
+}
+void display(void)
+{
+    
+    mid_point_circle();
+
+    hor(x1, y_1, x2, y2);
+    ver(x2, y2, x3, y3);
+
+    hor(x4, y4, x3, y3);
+    ver(x1, y_1, x4, y4);
+
+    glFlush();
+}
+void init(void)
+{
+    glutCreateWindow("Flag Draw");
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 0, 0, 0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-100, 100, -100, 100);
+}
+
+int main(int argc, char **argv)
+{
+    // cout<<"Enter the Coordinates\n";
+    // cin>>x1>>y_1>>x2>>y2>>x3>>y3>>x4>>y4;
+    
+    
+    //value of circle
+    r=10;
+    Xc=25; Yc=25;
+    
+    //value of rectangle
+    x1 = 0;     y_1 = 0;
+    x2 = 50;    y2 = 0;
+    x3 = 50;    y3 = 50;
+    x4 = 0;     y4 = 50;
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(550, 550);
+    glutInitWindowPosition(850, 150);
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+
+    return 0;
+}
+

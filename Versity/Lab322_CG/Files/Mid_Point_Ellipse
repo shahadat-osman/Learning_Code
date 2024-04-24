@@ -1,0 +1,106 @@
+//  main.cpp
+//  Lab_CSE_322
+//  Mid Point Ellipse Draw
+
+#include <iostream>
+#include <GLUT/glut.h>
+using namespace std;
+
+float h, k, a, b, x, y, fx, fy, P;
+
+void display(void)
+{
+//float h, k, a, b, x, y, fx, fy, P;
+    x = 0;
+    y = b;
+
+    fx = 0;
+    fy = 2 * a * a * b;
+
+    P = (b * b)-(a * a * b)+(0.25 * a * a);
+
+    while (fx < fy)
+    {
+        glBegin(GL_POINTS);
+            glVertex2f(h + x, k + y);
+            glVertex2f(h - x, k + y);
+            glVertex2f(h - x, k - y);
+            glVertex2f(h + x, k - y);
+        glEnd();
+
+        if (P < 0)
+        {
+            fx = fx + 2 * b * b;
+            P = P + fx + b * b;
+            x++;
+        }
+        if (P >= 0)
+        {
+            fx = fx + 2 * b * b;
+            fy = fy - 2 * a * a;
+            P = P + fx + b * b - fy;
+            x++;
+            y--;
+        }
+    }
+
+    P = (b * b)*(x + .5)*(x + .5)+(a * a)*(y - 1)*(y - 1)-(a * a)*(b * b);
+
+    while (y >= 0)
+    {
+        glBegin(GL_POINTS);
+            glVertex2f(h + x, k + y);
+            glVertex2f(h - x, k + y);
+            glVertex2f(h - x, k - y);
+            glVertex2f(h + x, k - y);
+        glEnd();
+        
+        if (P >= 0)
+        {
+            fy = fy - 2 * a * a;
+            P = P - fy + a * a;
+            y--;
+        }
+        if (P < 0)
+        {
+            fy = fy - 2 * a * a;
+            fx = fx + 2 * b * b;
+            P = P + fx - fy + a * a;
+            y--;
+            x++;
+        }
+    }
+
+    glFlush();
+}
+
+void init(void)
+{
+    glutCreateWindow("Mid Point Ellipse Draw");
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 0, 0, 0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-100, 100, -100, 100);
+}
+
+int main(int argc, char **argv)
+{
+    //cout << "Enter Center: ";
+    //cin >> h >> k;
+    //cout << "Enter Major Axis & Minor Axis: ";
+    //cin >> a >> b;
+    
+    h=30; k=20;
+    a=50; b=30;
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(550, 550);
+    glutInitWindowPosition(850, 150);
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+
+    return 0;
+}

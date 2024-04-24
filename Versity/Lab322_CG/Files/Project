@@ -1,0 +1,162 @@
+// Computer Graphics Glut Project
+#include <iostream>
+#include <vector>
+#include <GLUT/glut.h>
+using namespace std;
+
+class Car {
+public:
+    float x; // Car x-coordinate
+    float speed; // Car speed
+    float color[3]; // colors of Car
+
+    Car(float _x, float _speed, float _color[3]) : x(_x), speed(_speed) {
+        std::copy(_color, _color + 3, color);
+    }
+};
+
+vector<Car> cars;
+
+void drawRoad() {
+    glColor3f(0.412, 0.412, 0.412); // road
+    glBegin(GL_POLYGON);
+    glVertex2f(-100, -50);
+    glVertex2f(100, -50);
+    glVertex2f(100, -100);
+    glVertex2f(-100, -100);
+    glEnd();
+
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(5.0);
+    glBegin(GL_LINES);
+    for (int i = -90; i <= 90; i += 20) {
+        glVertex2f(i, -75);
+        glVertex2f(i + 10, -75);
+    }
+    glEnd();
+}
+
+void drawScenery() {
+    glColor3f(0.529, 0.808, 0.922); // Sky
+    glBegin(GL_POLYGON);
+    glVertex2f(-100, 100);
+    glVertex2f(100, 100);
+    glVertex2f(100, -50);
+    glVertex2f(-100, -50);
+    glEnd();
+
+    for (float i = -90; i < 100; i += 40) {
+        glColor3f(0.545, 0.271, 0.075);
+        glBegin(GL_POLYGON);
+        glVertex2f(i, -50);
+        glVertex2f(i + 5, -50);
+        glVertex2f(i + 5, -30);
+        glVertex2f(i, -30);
+        glEnd();
+
+        glColor3f(0.0, 0.749, 0.0);
+        glBegin(GL_POLYGON);
+        glVertex2f(i - 10, -30);
+        glVertex2f(i + 15, -30);
+        glVertex2f(i + 2.5, -15);
+        glEnd();
+    }
+}
+
+void drawCar(float x, float color[]) {
+    glColor3fv(color);  // car
+    glBegin(GL_POLYGON);
+    glVertex2f(x, -70);
+    glVertex2f(x + 30, -70);
+    glVertex2f(x + 30, -60);
+    glVertex2f(x + 10, -60);
+    glVertex2f(x, -65);
+    glEnd();
+
+    glColor3f(0.0, 0.0, 0.0); // side windows
+    glBegin(GL_POLYGON);
+    glVertex2f(x + 5, -65);
+    glVertex2f(x + 8, -65);
+    glVertex2f(x + 8, -63);
+    glVertex2f(x + 5, -63);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glVertex2f(x + 22, -65);
+    glVertex2f(x + 25, -65);
+    glVertex2f(x + 25, -63);
+    glVertex2f(x + 22, -63);
+    glEnd();
+
+    glColor3f(0.0, 0.0, 0.0); // wheels
+    const float PI = 3.14159;
+    float angle;
+
+    glBegin(GL_POLYGON); // Front wheel
+    for (int i = 0; i < 360; i++) {
+        angle = i * PI / 180;
+        glVertex2f(x + 5 + 2.5 * cos(angle), -70 - 2.5 * sin(angle));
+    }
+    glEnd();
+
+    glBegin(GL_POLYGON); // Rear wheel
+    for (int i = 0; i < 360; i++) {
+        angle = i * PI / 180;
+        glVertex2f(x + 25 + 2.5 * cos(angle), -70 - 2.5 * sin(angle));
+    }
+    glEnd();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    drawScenery();
+    drawRoad();
+
+    for (size_t i = 0; i < cars.size(); ++i) {
+        drawCar(cars[i].x, cars[i].color);
+    }
+
+    glutSwapBuffers();
+}
+
+void update(int value) {
+    for (size_t i = 0; i < cars.size(); ++i) {
+        cars[i].x -= cars[i].speed;
+        if (cars[i].x < -100)
+            cars[i].x = 100;
+    }
+
+    glutPostRedisplay();
+    glutTimerFunc(16, update, 0);
+}
+
+void init() {
+    glutCreateWindow("Roadside View");
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-100, 100, -100, 100);
+}
+
+int main(int argc, char **argv) {
+    float red[3] = {1.0, 0.0, 0.0};
+    float yellow[3] = {1.0, 1.0, 0.0};
+    float blue[3] = {0.0, 0.0, 1.0};
+
+    cars.emplace_back(50, 0.8, red);
+    cars.emplace_back(80, 1.2, yellow);
+    cars.emplace_back(110, 1.5, blue);
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(600, 600);
+    glutInitWindowPosition(600, 150);
+    init();
+    glutDisplayFunc(display);
+    glutTimerFunc(0, update, 0);
+    glutMainLoop();
+
+    return 0;
+}
+
